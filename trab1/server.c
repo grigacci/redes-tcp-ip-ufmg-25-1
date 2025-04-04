@@ -12,7 +12,7 @@ int main()
 {
     struct sockaddr_in sin;
     char buf[MAX_LINE];
-    int len;
+    int len ;
     int s, new_s;
 
     /* monta estrutura de dados de endereço */
@@ -20,6 +20,7 @@ int main()
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = INADDR_ANY;
     sin.sin_port = htons(SERVER_PORT);
+    len = sizeof(sin);
 
     /* prepara abertura passiva */
     if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
