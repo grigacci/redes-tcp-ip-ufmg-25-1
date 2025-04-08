@@ -1,1 +1,61 @@
 \section{Gabaritos}\label{sec:gabaritos}
+\subsection{Gabarito 1}
+\textbf{A. } Como posto no enunciado da questão, o \textit{switch} é do tipo \textit{store-and-forward}, isso quer dizer que ele necessita de receber o pacote como um todo, antes de retransmiti-lo. Isso será relevante para o calculo aqui proposto.
+Inicialmente, anotamos o tamanho total de nosso pacote:
+
+\begin{equation}
+	Packet_{size} = 12000 [bits] = 1500 [Bytes]
+\end{equation}
+
+Com isso, podemos calcular o tempo necessário para a transmissão do pacote, sendo ele, o tamanho total do pacote, dividido pela taxa de transmissão da rede, que neste caso é de 100 Mbps, logo:
+
+\begin{equation}
+	T_{transmissao} = \frac{Packet_{size}}{Taxa_{transmissao}} = \frac{12000}{100 * 10^6} = 120*10^{-6} [s] = 120 [\mu s]	
+\end{equation}	
+
+Além disso, o exercicio nos informa que cada \textit{switch} adicina um atraso de propagação de 10 $\mu$s 
+
+Como no exercicio não nos é informado a distancia entre os \textit{piers} e os \textit{switches}, iremos desprezar o tempo de propagação da informação.
+Desta maneira, podemos então calcular a latência e a vazão desse sistema
+
+\begin{equation}
+	Latencia = T_{transmissao_{A-Switch}} + T_{propag_{switch}} + T_{transmissao_{switch-B}}
+\end{equation} 
+\begin{equation}
+	Latencia = 120\mu s + 10\mu s + 120\mu s = 250 [\mu s]
+\end{equation}
+
+Com a latência calculada, podemos agora calcular a vazão total do sistema
+
+\begin{equation}
+	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{250 * 10^{-6}} = 48 * 10^6 [bps] = 48 [Mbps]
+\end{equation}
+
+\textbf{B. }
+Como calculado na questão A, nossas variaveis [${Packet_{size}, T_{transmissao}, T_{propag_{switch}}}$] se mantem iguais, o que será alterado será a utilização desses valores para o calculo final da latência e vazão
+
+Diferente da questão anterior, agora teremos 3 \textit{switches} em série em nossa linha de transmissão, logo, isso irá adicionar o ${T_{propag_{switch}}}$ de cada um na latencia final. Além disso, como se trata de um equipamento do tipo \textit{store-and-forward}, teremos que adicionar o $T_{transmissao}$ de cada aparelho. Desta maneira, podemos calcular a latencia sendo:
+
+\begin{equation}
+	Latencia = T_{transmissao_{A-Switch}} + N_{switches}*[T_{transmissao} + T_{propag_{switch}}]
+\end{equation}
+\begin{equation}
+	Latencia = 120*10^{-6} + 3*[(120 + 10)*10^{-6}] = 510 * 10^{-6} [s] = 510 [\mu s] 
+\end{equation}
+
+Onde $N_{switches}$ é o número de unidades de \textit{switches} em série em nossa linha.
+Desta forma, podemos notar que a adição de mais \textit{switches} em nossa sistema, afeta consideravelmente a latência
+
+Calculamos agora a vazão total desse sistema:
+\begin{equation}
+	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{510 * 10^{-6}} \approx 23.53 * 10^6 [bps] = 23.53 [Mbps]
+\end{equation}
+
+\textbf{C. }
+Com essa mudança da topologia do nosso \textit{switch} para \textit{cut-through}, teremos que recalcular o tempo de transmissão desse pacote de apenas 200 bits para acharmos a latencia total real.
+
+\begin{equation}
+	T_{transmissao_{cut-through}} = \frac{Cut_{size}}{Taxa_{transmissao}} = \frac{200}{100 * 10^6} =  2*10^{-6} [s] = 2 [\mu s]
+\end{equation}
+
+Com esse valor em mãos
