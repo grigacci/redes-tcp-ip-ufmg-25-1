@@ -1,0 +1,53 @@
+\section{Questões}\label{sec:questoes}
+
+\subsection{Questão 1}
+\textbf{Enunciado | }
+Calcule a latência (entendida como o tempo decorrido entre o momento do primeiro
+bit enviado até o momento do último bit recebido) e a vazão (volume de bits
+transmitidos dividido pela latência) para cada um dos cenários abaixo: 
+
+\textbf{A.} Uma rede local Ethernet cabeada de 100 Mbps com um único switch do tipo
+"store-and-forward" (que recebe totalmente o pacote antes de começar a
+retransmitir o mesmo) e usando um pacote de tamanho total de 12000 bits. Suponha
+que cada enlace (o da estação A para o switch e o do switch para a estação B)
+introduza um atraso de propagação de 10 microsegundos e que o switch seja capaz
+de começar a retransmitir o pacote logo após o mesmo terminar de ser recebido.
+
+
+
+\textbf{B.} Idem ao cenário (a), porém com três switches em série.
+
+\textbf{C.} Idem ao cenário (a), porém com um switch do tipo "cut-through", que é capaz
+de começar a retransmitir o pacote logo após os primeiros 200 bits do mesmo
+terem sido recebidos.
+
+\subsection{Questão 2}
+\textbf{Enunciado | }
+Em redes de comutação de pacotes, o cabeçalho (e em rede locais, também a cauda,
+parte final do pacote que carrega a detecção de erro) constitui o "overhead" do
+pacote, ou seja, aquilo que tem que ser acrescentado aos dados para que os
+mesmos possam trafegar pela estrutura da rede e chegar ao seu destino. No bloco
+de slides "Arquiteturas de Redes de Comunicação", observe a figura do slide
+"Encapsulamento na Arquitetura TCP/IP". Pesquise e responda:
+
+\textbf{A.} Qual é o tamanho em bytes do overhead do pacote TCP ("TCP segment")?
+
+\textbf{B.} Qual é o tamanho em bytes do overhead do pacote IP ("IP datagram")?
+
+\textbf{C.} Qual é o tamanho em bytes do overhead do pacote Ethernet ("Ethernet MAC
+frame")?
+
+\textbf{D.} Qual é o tamanho máximo em bytes do campo de dados do pacote Ethernet
+("Ethernet MAC frame")?
+ 
+\textbf{E.} Supondo que a aplicação de origem produza um bloco de 1 kByte de dados, a ser
+enviado à aplicação de destino, e considerando os overheads acima, o pacote IP
+resultante caberá no campo de dados do pacote Ethernet? Detalhe os cálculos.
+
+\textbf{F.} Se a rede Ethernet estiver operando a 100 Mbps, qual será o tempo total gasto
+para a placa de rede converter todos os bits do pacote ("Ethernet MAC frame") em
+forma de onda no cabo? Detalhe os cálculos.
+
+\textbf{G.} Considerando o bloco de 1 kByte de dados, qual é o volume total de bytes de
+overhead acrescentado ao mesmo pelo conjunto de todos os protocolos envolvidos
+na comunicação em rede deste cenário?  
