@@ -58,4 +58,21 @@ Com essa mudança da topologia do nosso \textit{switch} para \textit{cut-through
 	T_{transmissao_{cut-through}} = \frac{Cut_{size}}{Taxa_{transmissao}} = \frac{200}{100 * 10^6} =  2*10^{-6} [s] = 2 [\mu s]
 \end{equation}
 
-Com esse valor em mãos
+Com esse valor em mãos, e adaptadanto a equação da letra A, teremos:
+
+\begin{equation}
+	Latencia = T_{transmissao_{A-Switch}} + T_{propag_{switch}} + T_{transmissao_{cut-through}}
+\end{equation}
+\begin{equation}
+	Latencia = 120 * 10^{-6} + 10 * 10^{-6} + 2*10^{-6} = 132 * 10^{-6} [s] = 132 [\mu s]
+\end{equation}
+
+Em seguinda, calculamos então a vazão:
+
+\begin{equation}
+	Vazao = \frac{Packet_{size}}{Latencia} = \frac{1200}{132 * 10^{-6}} \approx 90.91 * 10^6 [bps] = 90.91 [Mbps]
+\end{equation}
+
+Notamos então, que a alteração da topologia do \textit{switch} para \textit{cut-through}, melhora significativamente a latência e por assim a vazão do sistema
+
+\subsection{Gabarito 2}
