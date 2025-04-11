@@ -6,28 +6,18 @@
 Calcule a latência (entendida como o tempo decorrido entre o momento do primeiro
 bit enviado até o momento do último bit recebido) e a vazão (volume de bits
 transmitidos dividido pela latência) para cada um dos cenários abaixo:
+\newline
 
-\begin{enumerate}
-    \item Uma rede local Ethernet cabeada de 100 Mbps com um único switch do tipo
+
+    \textbf{Letra A.}Uma rede local Ethernet cabeada de 100 Mbps com um único switch do tipo
     "store-and-forward" (que recebe totalmente o pacote antes de começar a
     retransmitir o mesmo) e usando um pacote de tamanho total de 12000 bits. Suponha
     que cada enlace (o da estação A para o switch e o do switch para a estação B)
     introduza um atraso de propagação de 10 microsegundos e que o switch seja capaz
     de começar a retransmitir o pacote logo após o mesmo terminar de ser recebido.
+    \newline
 
-    \item Idem ao cenário (a), porém com três switches do tipo "store-and-forward" entre
-    a estação A e a estação B. Suponha que cada enlace entre dois dispositivos (estação
-    e switch, ou dois switches) também introduz um atraso de propagação de 10
-    microsegundos.
-
-    \item Idem ao cenário (a), porém o switch utilizado é do tipo "cut-through" e pode
-    começar a retransmitir o pacote logo após os primeiros 200 bits do mesmo terem sido
-    recebidos.
-\end{enumerate}
-
-\textbf{Gabarito:}
-
-\textbf{A. } Como posto no enunciado da questão, o \textit{switch} é do tipo \textit{store-and-forward}, isso quer dizer que ele necessita de receber o pacote como um todo, antes de retransmiti-lo. Isso será relevante para o cálculo aqui proposto.
+\textbf{Resp A.} Como posto no enunciado da questão, o \textit{switch} é do tipo \textit{store-and-forward}, isso quer dizer que ele necessita de receber o pacote como um todo, antes de retransmiti-lo. Isso será relevante para o cálculo aqui proposto.
 
 Inicialmente, anotamos o tamanho total de nosso pacote:
 
@@ -57,8 +47,15 @@ A vazão, podemos calcular como sendo a razão entre o tanto de informação env
 \end{equation}
 
 Ambas as contas, tanto a de latencia quanto de vazão, foram retiradas do livro de \textcite{peterson2025redes}.
+\newline
 
-\textbf{B. } Como calculado na questão A, nossas variáveis permanecem as mesmas. Agora teremos 3 \textit{switches} em série, o que adiciona múltiplos $T_{propag_{switch}}$ e $T_{transmissao}$:
+    \textbf{Letra B.} Idem ao cenário (a), porém com três switches do tipo "store-and-forward" entre
+    a estação A e a estação B. Suponha que cada enlace entre dois dispositivos (estação
+    e switch, ou dois switches) também introduz um atraso de propagação de 10
+    microsegundos.
+    \newline
+
+\textbf{Resp B.} Como calculado na questão A, nossas variáveis permanecem as mesmas. Agora teremos 3 \textit{switches} em série, o que adiciona múltiplos $T_{propag_{switch}}$ e $T_{transmissao}$:
 
 \begin{equation}
 	Latencia = T_{transmissao_{A-Switch}} + N_{switches}*[T_{transmissao} + T_{propag_{switch}}]
@@ -70,8 +67,14 @@ Ambas as contas, tanto a de latencia quanto de vazão, foram retiradas do livro 
 \begin{equation}
 	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{510 * 10^{-6}} \approx 23.53 * 10^6 [bps] = 23.53 [Mbps]
 \end{equation}
+\newline
 
-\textbf{C. } Com a topologia \textit{cut-through}, recalculamos a latência com apenas 200 bits. Visto que, agora não é necessário aguardar o \textit{switch} receber o pacote completo, sendo apenas necessário receber os primeiros 200 bits. Logo, o atraso inserido na rede por esse aparelho, será apenas o tempo necessário para ele transmitir esses primeiros 200 bits. Desta maneira, o aparelho apenas adiciona uma atraso de 200 bits na entrega do pacote
+    \textbf{Letra C.} Idem ao cenário (a), porém o switch utilizado é do tipo "cut-through" e pode
+    começar a retransmitir o pacote logo após os primeiros 200 bits do mesmo terem sido
+    recebidos.
+    \newline
+
+\textbf{Resp C.} Com a topologia \textit{cut-through}, recalculamos a latência com apenas 200 bits. Visto que, agora não é necessário aguardar o \textit{switch} receber o pacote completo, sendo apenas necessário receber os primeiros 200 bits. Logo, o atraso inserido na rede por esse aparelho, será apenas o tempo necessário para ele transmitir esses primeiros 200 bits. Desta maneira, o aparelho apenas adiciona uma atraso de 200 bits na entrega do pacote
 
 \begin{equation}
 	T_{transmissao_{cut-through}} = \frac{Cut_{size}}{Taxa_{transmissao}} = \frac{200}{100 * 10^6} =  2*10^{-6} [s] = 2 [\mu s]
@@ -84,6 +87,7 @@ Ambas as contas, tanto a de latencia quanto de vazão, foram retiradas do livro 
 \begin{equation}
 	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{132 * 10^{-6}} \approx 90.91 * 10^6 [bps] = 90.91 [Mbps]
 \end{equation}
+\newline
 
 \subsection{Questão 2}
 
@@ -92,21 +96,22 @@ Em redes de comutação de pacotes, o cabeçalho (e em redes locais, também a c
 No bloco de slides “Arquiteturas de Redes de Comunicação”, observe a figura do slide “Encapsulamento na Arquitetura TCP/IP”. Pesquise e responda:
 \newline
 
-\textbf{Letra a)} Qual é o tamanho em bytes do overhead do pacote TCP ("TCP segment")? 
+\textbf{Letra A.} Qual é o tamanho em bytes do overhead do pacote TCP ("TCP segment")? 
 \newline
 
-Conforme o slide “TCP – fluxo confiável de bytes” (página 6) do bloco “Transporte em Redes IP (UDP e TCP)” \autocite{peterson2025redes} , o cabeçalho TCP padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Porta de Origem, Porta de Destino, Número de Sequência, Número de Confirmação, Flags, Janela, Checksum, etc. O cabeçalho pode ter até 60 bytes se opções forem incluídas, mas o overhead mínimo é 20 bytes.
+\textbf{Resp A.} Conforme o slide “TCP – fluxo confiável de bytes” (página 6) do bloco “Transporte em Redes IP (UDP e TCP)” \autocite{peterson2025redes} , o cabeçalho TCP padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Porta de Origem, Porta de Destino, Número de Sequência, Número de Confirmação, Flags, Janela, Checksum, etc. O cabeçalho pode ter até 60 bytes se opções forem incluídas, mas o overhead mínimo é 20 bytes.
 \newline
 
-\textbf{Letra b)} Qual é o tamanho em bytes do overhead do pacote IP ("IP datagram")?
+\textbf{Letra B.} Qual é o tamanho em bytes do overhead do pacote IP ("IP datagram")?
 \newline
 
-Conforme o slide “Datagrama IPv4” (página 6) do bloco “Protocolo IP”, o cabeçalho IPv4 padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Versão, Tamanho do Cabeçalho (HLen), Tipo de Serviço (TOS), Tamanho Total, Identificação, Flags, Deslocamento, TTL, Protocolo, Checksum do Cabeçalho, Endereço IP de Origem e Endereço IP de Destino. Assim como o TCP, o cabeçalho IP pode incluir opções, aumentando seu tamanho até 60 bytes, mas o overhead mínimo é 20 bytes.
+\textbf{Resp B.} Conforme o slide “Datagrama IPv4” (página 6) do bloco “Protocolo IP”, o cabeçalho IPv4 padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Versão, Tamanho do Cabeçalho (HLen), Tipo de Serviço (TOS), Tamanho Total, Identificação, Flags, Deslocamento, TTL, Protocolo, Checksum do Cabeçalho, Endereço IP de Origem e Endereço IP de Destino. Assim como o TCP, o cabeçalho IP pode incluir opções, aumentando seu tamanho até 60 bytes, mas o overhead mínimo é 20 bytes.
 \newline
 
-\textbf{Letra c)} Qual é o tamanho em bytes do overhead do pacote Ethernet ("Ethernet MAC frame")?
+\textbf{Letra C.} Qual é o tamanho em bytes do overhead do pacote Ethernet ("Ethernet MAC frame")?
 \newline
-Conforme o slide “Quadro de MAC (IEEE 802.3)” (página 7) do bloco “Arquiteturas de Redes - Redes Locais”, o quadro Ethernet (MAC frame) possui os seguintes campos que constituem o overhead adicionado ao redor dos dados da camada de rede (pacote IP):
+
+\textbf{Resp C.} Conforme o slide “Quadro de MAC (IEEE 802.3)” (página 7) do bloco “Arquiteturas de Redes - Redes Locais”, o quadro Ethernet (MAC frame) possui os seguintes campos que constituem o overhead adicionado ao redor dos dados da camada de rede (pacote IP):
 
 \begin{itemize}
     \item Endereço MAC de Destino (DA): 6 bytes
@@ -117,13 +122,17 @@ Conforme o slide “Quadro de MAC (IEEE 802.3)” (página 7) do bloco “Arquit
 
 O overhead total do quadro Ethernet (excluindo preâmbulo e SFD que são da camada física) é a soma desses campos: 6+6+2+4 = 18 bytes.
 \newline
-\textbf{Letra d)} Qual é o tamanho máximo em bytes do campo de dados do pacote Ethernet ("Ethernet MAC frame")?
+
+\textbf{Letra D.} Qual é o tamanho máximo em bytes do campo de dados do pacote Ethernet ("Ethernet MAC frame")?
 \newline
-Conforme o mesmo slide “Quadro de MAC (IEEE 802.3)”, o campo “Data + Padding” do quadro Ethernet tem um tamanho máximo de 1500 bytes. Este valor é conhecido como MTU (Maximum Transmission Unit) padrão para Ethernet.
+
+\textbf{Resp D.} Conforme o mesmo slide “Quadro de MAC (IEEE 802.3)”, o campo “Data + Padding” do quadro Ethernet tem um tamanho máximo de 1500 bytes. Este valor é conhecido como MTU (Maximum Transmission Unit) padrão para Ethernet.
 \newline
-\textbf{Letra e)} Supondo que a aplicação de origem produza um bloco de 1 kByte de dados, a ser enviado à aplicação de destino, e considerando os overheads acima, o pacote IP resultante caberá no campo de dados do pacote Ethernet? Detalhe os cálculos.
+
+\textbf{Letra E.} Supondo que a aplicação de origem produza um bloco de 1 kByte de dados, a ser enviado à aplicação de destino, e considerando os overheads acima, o pacote IP resultante caberá no campo de dados do pacote Ethernet? Detalhe os cálculos.
 \newline
-Para verificar se o pacote IP resultante cabe no campo de dados do Ethernet, calculamos o tamanho total do pacote IP que será encapsulado:
+
+\textbf{Resp E.} Para verificar se o pacote IP resultante cabe no campo de dados do Ethernet, calculamos o tamanho total do pacote IP que será encapsulado:
 
 \begin{itemize}
     \item Dados da Aplicação: 1 kByte = 1024 bytes
@@ -133,8 +142,10 @@ Para verificar se o pacote IP resultante cabe no campo de dados do Ethernet, cal
 
 Tamanho total do pacote IP = 1024+20+20 = 1064 bytes. Como o campo de dados Ethernet suporta até 1500 bytes, sim, o pacote IP resultante cabe no quadro Ethernet.
 \newline
-\textbf{Letra f)} Se a rede Ethernet estiver operando a 100 Mbps, qual será o tempo total gasto para a placa de rede converter todos os bits do pacote ("Ethernet MAC frame") em forma de onda no cabo? Detalhe os cálculos.
+\textbf{Letra F.} Se a rede Ethernet estiver operando a 100 Mbps, qual será o tempo total gasto para a placa de rede converter todos os bits do pacote ("Ethernet MAC frame") em forma de onda no cabo? Detalhe os cálculos.
 \newline
+
+\textbf{Resp F.}
 \begin{itemize}
     \item Preâmbulo: 7 bytes
     \item SFD: 1 byte
@@ -157,8 +168,9 @@ Tempo_{transmissao} = \frac{8720}{10^8} = 87.2 \mu [s]
 \newline
 
 
-\textbf{Letra g)} Considerando o bloco de 1 kByte de dados, qual é o volume total de bytes de overhead acrescentado ao mesmo pelo conjunto de todos os protocolos envolvidos na comunicação em rede deste cenário?
+\textbf{Letra G.} Considerando o bloco de 1 kByte de dados, qual é o volume total de bytes de overhead acrescentado ao mesmo pelo conjunto de todos os protocolos envolvidos na comunicação em rede deste cenário?
 \newline
+\textbf{Resp G.}
 \begin{itemize}
     \item TCP: 20 bytes
     \item IP: 20 bytes
