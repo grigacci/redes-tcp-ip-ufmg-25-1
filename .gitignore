@@ -5,3 +5,7 @@
 *.aux
 *.log
 *.env
+*.xml
+*.bcf
+*.blg
+*.bbl

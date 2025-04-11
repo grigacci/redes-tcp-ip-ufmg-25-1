@@ -9,6 +9,8 @@
 % comandos customizados
 \input{resources/custom_commands.tex}
 
+\addbibresource{resources/bibliografia.bib}
+
 \usepackage{placeins}
 \usepackage{longtable}
 \usepackage{tabularray}
@@ -65,156 +67,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % *COLOQUE SUAS SEÇÕES TEXTUAIS AQUI
 
-\section{Estudo Dirigido 1}
-
-\subsection*{Questão 1}
-
-Calcule a latência (entendida como o tempo decorrido entre o momento do primeiro
-bit enviado até o momento do último bit recebido) e a vazão (volume de bits
-transmitidos dividido pela latência) para cada um dos cenários abaixo:
-
-\begin{enumerate}
-    \item Uma rede local Ethernet cabeada de 100 Mbps com um único switch do tipo
-    "store-and-forward" (que recebe totalmente o pacote antes de começar a
-    retransmitir o mesmo) e usando um pacote de tamanho total de 12000 bits. Suponha
-    que cada enlace (o da estação A para o switch e o do switch para a estação B)
-    introduza um atraso de propagação de 10 microsegundos e que o switch seja capaz
-    de começar a retransmitir o pacote logo após o mesmo terminar de ser recebido.
-
-    \item Idem ao cenário (a), porém com três switches do tipo "store-and-forward" entre
-    a estação A e a estação B. Suponha que cada enlace entre dois dispositivos (estação
-    e switch, ou dois switches) também introduz um atraso de propagação de 10
-    microsegundos.
-
-    \item Idem ao cenário (a), porém o switch utilizado é do tipo "cut-through" e pode
-    começar a retransmitir o pacote logo após os primeiros 200 bits do mesmo terem sido
-    recebidos.
-\end{enumerate}
-
-\textbf{Gabarito:}
-
-\textbf{A. } Como posto no enunciado da questão, o \textit{switch} é do tipo \textit{store-and-forward}, isso quer dizer que ele necessita de receber o pacote como um todo, antes de retransmiti-lo. Isso será relevante para o cálculo aqui proposto.
-
-Inicialmente, anotamos o tamanho total de nosso pacote:
-
-\begin{equation}
-	Packet_{size} = 12000 [bits] = 1500 [Bytes]
-\end{equation}
-
-Com isso, podemos calcular o tempo necessário para a transmissão do pacote:
-
-\begin{equation}
-	T_{transmissao} = \frac{Packet_{size}}{Taxa_{transmissao}} = \frac{12000}{100 * 10^6} = 120*10^{-6} [s] = 120 [\mu s]	
-\end{equation}	
-
-Além disso, o exercício nos informa que cada \textit{switch} adiciona um atraso de propagação de 10 $\mu$s. Como não é informada a distância entre os dispositivos, desprezamos o tempo de propagação da informação.
-
-\begin{equation}
-	Latencia = T_{transmissao_{A-Switch}} + T_{propag_{switch}} + T_{transmissao_{switch-B}}
-\end{equation} 
-\begin{equation}
-	Latencia = 120\mu s + 10\mu s + 120\mu s = 250 [\mu s]
-\end{equation}
-
-\begin{equation}
-	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{250 * 10^{-6}} = 48 * 10^6 [bps] = 48 [Mbps]
-\end{equation}
-
-\textbf{B. } Como calculado na questão A, nossas variáveis permanecem as mesmas. Agora teremos 3 \textit{switches} em série, o que adiciona múltiplos $T_{propag_{switch}}$ e $T_{transmissao}$:
-
-\begin{equation}
-	Latencia = T_{transmissao_{A-Switch}} + N_{switches}*[T_{transmissao} + T_{propag_{switch}}]
-\end{equation}
-\begin{equation}
-	Latencia = 120*10^{-6} + 3*[(120 + 10)*10^{-6}] = 510 * 10^{-6} [s] = 510 [\mu s] 
-\end{equation}
-
-\begin{equation}
-	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{510 * 10^{-6}} \approx 23.53 * 10^6 [bps] = 23.53 [Mbps]
-\end{equation}
-
-\textbf{C. } Com a topologia \textit{cut-through}, recalculamos a latência com apenas 200 bits:
-
-\begin{equation}
-	T_{transmissao_{cut-through}} = \frac{Cut_{size}}{Taxa_{transmissao}} = \frac{200}{100 * 10^6} =  2*10^{-6} [s] = 2 [\mu s]
-\end{equation}
-
-\begin{equation}
-	Latencia = 120 * 10^{-6} + 10 * 10^{-6} + 2*10^{-6} = 132 * 10^{-6} [s] = 132 [\mu s]
-\end{equation}
-
-\begin{equation}
-	Vazao = \frac{Packet_{size}}{Latencia} = \frac{12000}{132 * 10^{-6}} \approx 90.91 * 10^6 [bps] = 90.91 [Mbps]
-\end{equation}
-
-\subsection*{Questão 2}
-
-Em redes de comutação de pacotes, o cabeçalho (e em redes locais, também a cauda — parte final do pacote que carrega a detecção de erro) constitui o “overhead” do pacote, ou seja, aquilo que tem que ser acrescentado aos dados para que os mesmos possam trafegar pela estrutura da rede e chegar ao seu destino.
-
-No bloco de slides “Arquiteturas de Redes de Comunicação”, observe a figura do slide “Encapsulamento na Arquitetura TCP/IP”. Pesquise e responda:
-
-\textbf{Letra a)} Qual é o tamanho em bytes do overhead do pacote TCP ("TCP segment")?
-
-Conforme o slide “TCP – fluxo confiável de bytes” (página 6) do bloco “Transporte em Redes IP (UDP e TCP)”, o cabeçalho TCP padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Porta de Origem, Porta de Destino, Número de Sequência, Número de Confirmação, Flags, Janela, Checksum, etc. O cabeçalho pode ter até 60 bytes se opções forem incluídas, mas o overhead mínimo é 20 bytes.
-
-\textbf{Letra b)} Qual é o tamanho em bytes do overhead do pacote IP ("IP datagram")?
-
-Conforme o slide “Datagrama IPv4” (página 6) do bloco “Protocolo IP”, o cabeçalho IPv4 padrão, sem opções, tem um tamanho de 20 bytes. Este cabeçalho inclui campos como Versão, Tamanho do Cabeçalho (HLen), Tipo de Serviço (TOS), Tamanho Total, Identificação, Flags, Deslocamento, TTL, Protocolo, Checksum do Cabeçalho, Endereço IP de Origem e Endereço IP de Destino. Assim como o TCP, o cabeçalho IP pode incluir opções, aumentando seu tamanho até 60 bytes, mas o overhead mínimo é 20 bytes.
-
-\textbf{Letra c)} Qual é o tamanho em bytes do overhead do pacote Ethernet ("Ethernet MAC frame")?
-
-Conforme o slide “Quadro de MAC (IEEE 802.3)” (página 7) do bloco “Arquiteturas de Redes - Redes Locais”, o quadro Ethernet (MAC frame) possui os seguintes campos que constituem o overhead adicionado ao redor dos dados da camada de rede (pacote IP):
-
-\begin{itemize}
-    \item Endereço MAC de Destino (DA): 6 bytes
-    \item Endereço MAC de Origem (SA): 6 bytes
-    \item Tipo/Tamanho (Length/Type): 2 bytes
-    \item Sequência de Checagem do Quadro (FCS - trailer): 4 bytes
-\end{itemize}
-
-O overhead total do quadro Ethernet (excluindo preâmbulo e SFD que são da camada física) é a soma desses campos: 6+6+2+4 = 18 bytes.
-
-\textbf{Letra d)} Qual é o tamanho máximo em bytes do campo de dados do pacote Ethernet ("Ethernet MAC frame")?
-
-Conforme o mesmo slide “Quadro de MAC (IEEE 802.3)”, o campo “Data + Padding” do quadro Ethernet tem um tamanho máximo de 1500 bytes. Este valor é conhecido como MTU (Maximum Transmission Unit) padrão para Ethernet.
-
-\textbf{Letra e)} Supondo que a aplicação de origem produza um bloco de 1 kByte de dados, a ser enviado à aplicação de destino, e considerando os overheads acima, o pacote IP resultante caberá no campo de dados do pacote Ethernet? Detalhe os cálculos.
-
-Para verificar se o pacote IP resultante cabe no campo de dados do Ethernet, calculamos o tamanho total do pacote IP que será encapsulado:
-
-\begin{itemize}
-    \item Dados da Aplicação: 1 kByte = 1024 bytes
-    \item Overhead TCP (cabeçalho): 20 bytes
-    \item Overhead IP (cabeçalho): 20 bytes
-\end{itemize}
-
-Tamanho total do pacote IP = 1024+20+20 = 1064 bytes. Como o campo de dados Ethernet suporta até 1500 bytes, sim, o pacote IP resultante cabe no quadro Ethernet.
-
-\textbf{Letra f)} Se a rede Ethernet estiver operando a 100 Mbps, qual será o tempo total gasto para a placa de rede converter todos os bits do pacote ("Ethernet MAC frame") em forma de onda no cabo? Detalhe os cálculos.
-
-\begin{itemize}
-    \item Preâmbulo: 7 bytes
-    \item SFD: 1 byte
-    \item Cabeçalho MAC: 14 bytes
-    \item Dados: 1064 bytes
-    \item FCS: 4 bytes
-\end{itemize}
-
-Total = 1090 bytes = 8720 bits
-
-Velocidade: 100 Mbps = $10^8$ bps
-
-Tempo de transmissão = $\frac{8720}{10^8} = 87.2 \mu s$
-
-\textbf{Letra g)} Considerando o bloco de 1 kByte de dados, qual é o volume total de bytes de overhead acrescentado ao mesmo pelo conjunto de todos os protocolos envolvidos na comunicação em rede deste cenário?
-
-\begin{itemize}
-    \item TCP: 20 bytes
-    \item IP: 20 bytes
-    \item Ethernet: 14 (cabeçalho) + 4 (FCS) = 18 bytes
-\end{itemize}
-
-Total = 20 + 20 + 18 = 58 bytes.
+\input{sections/questoes}
 %\input{sections/conclusao}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,8 +75,9 @@ Total = 20 + 20 + 18 = 58 bytes.
 
 
 % bibliografia
-\bibliographystyle{unsrt}
 
+
+\printbibliography
 
 
 \end{document}
