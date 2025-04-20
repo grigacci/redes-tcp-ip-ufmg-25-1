@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+
+\title{Estudo Teórico 2 \\ \large ELT091 – Redes TCP/IP – 2025/1}
+\author{
+Guilherme Astolfo Rigacci \\
+Augusto Ribeiro \\
+Matheus Miranda
+}
+\date{24 de abril de 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Questão 1}
+
+\textbf{a)} Uma RFC (Request for Comments) é um tipo de publicação formal do IETF (Internet Engineering Task Force), usada para desenvolver e definir padrões da Internet. Elas podem conter especificações técnicas, diretrizes, ou experimentações. O órgão responsável por gerenciar essas RFCs é o próprio IETF, sob supervisão da IAB (Internet Architecture Board). 
+
+A diferença entre uma RFC do tipo \textbf{Standards Track} e uma do tipo \textbf{Experimental} está no propósito: as primeiras seguem um processo formal de padronização e podem se tornar um padrão oficial da Internet, enquanto as experimentais propõem ideias ou tecnologias que ainda não estão maduras o suficiente para padronização. 
+
+\textbf{Fonte:} RFC Editor – \url{https://www.rfc-editor.org/about/}, acesso em abr. 2025.
+
+\vspace{0.5em}
+\textbf{b)} A RFC 791 descreve o protocolo IP. O campo "Type of Service" (ToS) possui 8 bits divididos em:
+
+- 3 bits para prioridade (Precedence),
+- 1 bit para minimizar atraso,
+- 1 bit para maximizar taxa de transferência,
+- 1 bit para maximizar confiabilidade,
+- 1 reservado para uso futuro,
+- 1 não utilizado.
+
+O objetivo é fornecer diretrizes para roteadores priorizarem pacotes segundo o tipo de serviço desejado.
+
+\textbf{Fonte:} J. Postel. \textit{RFC 791 – Internet Protocol}, setembro de 1981. Disponível em: \url{https://www.rfc-editor.org/rfc/rfc791}
+
+\section*{Questão 2}
+
+Temos 2048 bytes de dados + 20 bytes de cabeçalho TCP = 2068 bytes a serem entregues ao IP.
+
+\vspace{0.5em}
+\textbf{Primeira rede:}
+\begin{itemize}
+    \item MTU = 1024 bytes
+    \item Cabeçalho IP = 20 bytes → carga útil = 1004 bytes
+\end{itemize}
+
+Fragmentos gerados:
+\begin{itemize}
+    \item Fragmento 1: offset 0, 1004 bytes de dados (bytes 0–1003)
+    \item Fragmento 2: offset 1004, 1004 bytes (bytes 1004–2007)
+    \item Fragmento 3: offset 2008, 60 bytes (bytes 2008–2067)
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Segunda rede:}
+\begin{itemize}
+    \item MTU = 512 bytes
+    \item Cabeçalho IP = 20 bytes → carga útil = 492 bytes
+\end{itemize}
+
+Fragmentos gerados:
+\begin{itemize}
+    \item Fragmento 1: offset 0, 492 bytes
+    \item Fragmento 2: offset 492, 492 bytes
+    \item Fragmento 3: offset 984, 492 bytes
+    \item Fragmento 4: offset 1476, 492 bytes
+    \item Fragmento 5: offset 1968, 100 bytes
+\end{itemize}
+
+Offsets IP são dados em unidades de 8 bytes:
+
+\begin{itemize}
+    \item Fragmento 1: offset 0  
+    \item Fragmento 2: offset $\approx$ 61 (492 / 8)  
+    \item Fragmento 3: offset 123  
+    \item Fragmento 4: offset 185  
+    \item Fragmento 5: offset 246
+\end{itemize}
+
+\textbf{Fonte:} KUROSE, J. F.; ROSS, K. W. \textit{Redes de Computadores e a Internet: Uma Abordagem Top-Down}. 7. ed. Pearson, 2018. Seção 3.2.2.
+
+\section*{Questão 3}
+
+O campo "Ident" tem 16 bits, ou seja, 65.536 valores possíveis. Para evitar colisões no intervalo de 60 segundos:
+
+\[
+\frac{65536~\text{pacotes}}{60~\text{s}} \approx 1092.27~\text{pacotes/s}
+\]
+
+Multiplicando pelo tamanho dos pacotes (576 bytes):
+
+\[
+1092.27 \times 576 = 628851.2~\text{bytes/s} \approx 5.03~\text{Mbps}
+\]
+
+\textbf{Conclusão:} a largura de banda máxima é cerca de 5 Mbps. Caso ultrapassada, pacotes com mesmo identificador podem ainda estar trafegando, o que causaria reassemblagem incorreta e perda de dados.
+
+\textbf{Fonte:} Cálculo próprio baseado em especificações do IPv4 (RFC 791).
+
+\section*{Questão 4}
+
+A motivação principal do IPv6 foi o esgotamento iminente de endereços IPv4, limitados a 32 bits. O crescimento de dispositivos conectados exigiu uma solução escalável.
+
+A demora na adoção do IPv6 se deve à complexidade da transição, ao custo de atualização de sistemas legados e à ampla adoção de mecanismos paliativos, como NAT, que estenderam a vida útil do IPv4.
+
+\textbf{Fonte:} KUROSE, J. F.; ROSS, K. W. \textit{Redes de Computadores e a Internet: Uma Abordagem Top-Down}. 7. ed. Pearson, 2018. Seção 4.1.3.
+
+\section*{Questão 5}
+
+Principais inovações do IPv6 em relação ao IPv4:
+
+\begin{itemize}
+    \item Espaço de endereços maior (128 bits)
+    \item Cabeçalho simplificado
+    \item Suporte nativo a IPsec
+    \item Autoconfiguração (stateless)
+    \item Eliminação da necessidade de NAT
+    \item Melhor suporte à mobilidade e QoS
+\end{itemize}
+
+\textbf{Fonte:} DEERING, S.; HINDEN, R. \textit{RFC 8200 – Internet Protocol, Version 6 (IPv6) Specification}, julho de 2017. \url{https://www.rfc-editor.org/rfc/rfc8200}
+
+\section*{Questão 6}
+
+\textbf{Pilha dupla (dual stack):} Permite que dispositivos operem com IPv4 e IPv6 simultaneamente, selecionando o protocolo com base no destino.
+
+\textbf{Tunelamento (tunneling):} Envia pacotes IPv6 encapsulados em pacotes IPv4, permitindo que trafeguem por redes legadas sem suporte nativo a IPv6.
+
+\textbf{Fonte:} KUROSE, J. F.; ROSS, K. W. \textit{Redes de Computadores e a Internet: Uma Abordagem Top-Down}. 7. ed. Pearson, 2018. Seção 4.1.3.
+
+\end{document}
