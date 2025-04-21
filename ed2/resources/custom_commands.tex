@@ -1,0 +1,25 @@
+
+% creates a horizontal rule¨
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% document parameters
+\newcommand{\autores}[1]{\newcommand{\docAutores}{#1}}
+\newcommand{\data}[1]{\newcommand{\docDate}{#1}}
+\newcommand{\disciplina}[1]{\newcommand{\docDisciplina}{#1}}
+\newcommand{\turma}[1]{\newcommand{\docTurma}{#1}}
+\newcommand{\titulo}[1]{\newcommand{\docTitulo}{#1}}
+\newcommand{\subtitulo}[1]{\newcommand{\docSubtitulo}{#1}}
+\newcommand{\descricao}[1]{\newcommand{\docDescricao}{#1}}
+\newcommand{\departamento}[1]{\newcommand{\docDepartamento}{#1}}
+\newcommand{\professor}[1]{\newcommand{\docProfessor}{#1}}
+
+% custom colors
+\definecolor{redUfmg}{HTML}{c8102e}	
+
+
+% new page command
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
