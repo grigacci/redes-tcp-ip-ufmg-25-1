@@ -1,4 +1,0 @@
-/mnt/d/Drive/UFMG/10_periodo/tcp_ip/redes-tcp-ip-ufmg-25-1/trab1/build/CMakeFiles/rebuild_cache.dir
-/mnt/d/Drive/UFMG/10_periodo/tcp_ip/redes-tcp-ip-ufmg-25-1/trab1/build/CMakeFiles/server.dir
-/mnt/d/Drive/UFMG/10_periodo/tcp_ip/redes-tcp-ip-ufmg-25-1/trab1/build/CMakeFiles/edit_cache.dir
-/mnt/d/Drive/UFMG/10_periodo/tcp_ip/redes-tcp-ip-ufmg-25-1/trab1/build/CMakeFiles/client.dir
