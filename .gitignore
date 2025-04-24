@@ -17,3 +17,5 @@
 *.make
 *.marks
 *.dir
+CMakeFiles/
+build/
