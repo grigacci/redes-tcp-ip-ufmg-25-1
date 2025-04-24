@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <stdlib.h>
 
 #define SERVER_PORT 54321
 #define MAX_PENDING 5

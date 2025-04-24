@@ -9,3 +9,11 @@
 *.bcf
 *.blg
 *.bbl
+*.cmake
+*.bin
+*.includecache
+*.o
+*.internal
+*.make
+*.marks
+*.dir
