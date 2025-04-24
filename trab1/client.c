@@ -2,10 +2,10 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>  // Add this for strlen()
+#include <string.h>  
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <unistd.h>  // Add this for close()
+#include <unistd.h>  
 
 #define SERVER_PORT 54321
 #define MAX_LINE 256
