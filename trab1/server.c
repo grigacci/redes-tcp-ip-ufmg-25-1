@@ -45,7 +45,6 @@ int main() {
     while ((len = recv(new_s, buf, sizeof(buf), 0)) > 0) {
       buf[len] = '\0';  // Properly terminate the string
       fputs(buf, stdout);
-      fflush(stdout);  // Ensure output is displayed immediately
     }
 
     if (len == 0) {

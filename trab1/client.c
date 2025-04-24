@@ -2,8 +2,10 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>  // Add this for strlen()
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>  // Add this for close()
 
 #define SERVER_PORT 54321
 #define MAX_LINE 256
@@ -41,24 +43,34 @@ int main(int argc, char* argv[]) {
           ntohs(sin.sin_port));
 
   /* abertura ativa */
+  fprintf(stdout, "simplex-talk: opening socket\n");
   if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
   }
 
+  fprintf(stdout, "simplex-talk: connecting\n");
   if (connect(s, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
+    fprintf(stderr, "simplex-talk: connection error\n");
     perror("simplex-talk: connect");
     close(s);
     exit(1);
   }
 
   /*laço principal: obtém e envia linhas de texto */
+  fprintf(stdout, "Waiting for input ...\n");
+  fflush(stdout);
+
   while (fgets(buf, sizeof(buf), stdin)) {
-    fprintf(stdout, "simplex-talk: read %d bytes\n", strlen(buf));
     buf[MAX_LINE - 1] = '\0';
     len = strlen(buf) + 1;
+
+    ssize_t bytes_sent = send(s, buf, len, 0);
     send(s, buf, len, 0);
-    fprintf(stdout, "simplex-talk: sent %d bytes\n", len);
+    fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
     fflush(stdout);
   }
+
+  close(s);
+  return 0;
 }
