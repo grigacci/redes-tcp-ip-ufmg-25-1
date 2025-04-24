@@ -2,10 +2,10 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>  
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
-#include <unistd.h>  
+#include <unistd.h>
 
 #define SERVER_PORT 54321
 #define MAX_LINE 256
@@ -66,8 +66,15 @@ int main(int argc, char* argv[]) {
     len = strlen(buf) + 1;
 
     ssize_t bytes_sent = send(s, buf, len, 0);
-    send(s, buf, len, 0);
     fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
+
+    char recv_buf[MAX_LINE];
+    ssize_t bytes_received = recv(s, recv_buf, sizeof(recv_buf), 0);
+    if (bytes_received > 0) {
+      recv_buf[bytes_received] = '\0';  // Properly terminate the string
+      fprintf(stdout, "Received echo: %s", recv_buf);
+    }
+
     fflush(stdout);
   }
 

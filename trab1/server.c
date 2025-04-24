@@ -34,6 +34,8 @@ int main() {
   }
 
   listen(s, MAX_PENDING);
+  fprintf(stdout, "simplex-talk: waiting for connections on port %d\n",
+          ntohs(sin.sin_port));
 
   /* espera conexão, depois recebe e imprime texto */
   while (1) {
@@ -45,6 +47,8 @@ int main() {
     while ((len = recv(new_s, buf, sizeof(buf), 0)) > 0) {
       buf[len] = '\0';  // Properly terminate the string
       fputs(buf, stdout);
+      ssize_t bytes_sent = send(new_s, buf, len, 0);  // Echo back to the client
+      fprintf(stdout, "Sent %zd bytes back to client\n", bytes_sent);
     }
 
     if (len == 0) {
