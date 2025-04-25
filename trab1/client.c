@@ -18,9 +18,16 @@ int main(int argc, char* argv[]) {
   char buf[MAX_LINE];
   int s;
   int len;
+  char* protocol;
+  int i = 0;
 
-  if (argc == 2) {
+  if (argc == 3) {
     host = argv[1];
+    protocol = argv[2];
+    while(protocol[i] != '\0') {
+      protocol[i] = toupper(protocol[i]);
+      i++;
+    }
   } else {
     fprintf(stderr, "usage: simplex-talk host\n");
     exit(1);
@@ -43,7 +50,7 @@ int main(int argc, char* argv[]) {
           ntohs(sin.sin_port));
 
   /* abertura ativa */
-  fprintf(stdout, "simplex-talk: opening socket\n");
+  fprintf(stdout, "simplex-talk: opening %s socket\n", protocol);
   if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
     perror("simplex-talk: socket");
     exit(1);
