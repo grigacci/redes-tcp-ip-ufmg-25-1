@@ -86,14 +86,43 @@ int main(int argc, char* argv[]) {
       exit(1);
     }
 
-    while((len = recv(new_s, buf, sizeof(buf), 0)) > 0){
+    fprintf(stdout, "simplex-talk: waiting for UDP messages on port %d\n",
+            ntohs(sin.sin_port));
+
+    // For UDP we need to keep track of client address
+    struct sockaddr_in client_addr;
+    socklen_t client_len = sizeof(client_addr);
+
+    while (1) {
+      // Use recvfrom() instead of recv() for UDP
+      len = recvfrom(s, buf, sizeof(buf), 0, (struct sockaddr*)&client_addr,
+                     &client_len);
+
+      if (len < 0) {
+        perror("simplex-talk: recvfrom");
+        continue;
+      }
 
       buf[len] = '\0';  // Properly terminate the string
-      fputs(buf, stdout);
-      ssize_t bytes_sent =
-          sendto(s, buf, len, 0, (struct sockaddr*)&sin, len);  // Echo back to the client
-      fprintf(stdout, "Sent %zd bytes back to client\n", bytes_sent);
-    }
+      fprintf(stdout, "Received from %s:%d: %s",
+              inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port),
+              buf);
 
+      // Echo back using sendto()
+      ssize_t bytes_sent =
+          sendto(s, buf, len, 0, (struct sockaddr*)&client_addr, client_len);
+
+      if (bytes_sent < 0) {
+        perror("simplex-talk: sendto");
+      } else {
+        fprintf(stdout, "Sent %zd bytes back to client\n", bytes_sent);
+      }
+    }
+  } else {
+    fprintf(stdout, "simplex-talk: unknown protocol: %s. Closing the server\n", protocol);
+    exit(1);
   }
+
+  close(s);
+  return 0;
 }

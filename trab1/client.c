@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
   if (argc == 3) {
     host = argv[1];
     protocol = argv[2];
-    while(protocol[i] != '\0') {
+    while (protocol[i] != '\0') {
       protocol[i] = toupper(protocol[i]);
       i++;
     }
@@ -49,40 +49,83 @@ int main(int argc, char* argv[]) {
   fprintf(stdout, "simplex-talk: sending to %s port %d\n", host,
           ntohs(sin.sin_port));
 
-  /* abertura ativa */
-  fprintf(stdout, "simplex-talk: opening %s socket\n", protocol);
-  if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
-    perror("simplex-talk: socket");
-    exit(1);
-  }
+  if (strcmp(protocol, "TCP") == 0) {
+    fprintf(stdout, "simplex-talk: using TCP protocol\n");
 
-  fprintf(stdout, "simplex-talk: connecting\n");
-  if (connect(s, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
-    fprintf(stderr, "simplex-talk: connection error\n");
-    perror("simplex-talk: connect");
-    close(s);
-    exit(1);
-  }
-
-  /*laço principal: obtém e envia linhas de texto */
-  fprintf(stdout, "Waiting for input ...\n");
-  fflush(stdout);
-
-  while (fgets(buf, sizeof(buf), stdin)) {
-    buf[MAX_LINE - 1] = '\0';
-    len = strlen(buf) + 1;
-
-    ssize_t bytes_sent = send(s, buf, len, 0);
-    fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
-
-    char recv_buf[MAX_LINE];
-    ssize_t bytes_received = recv(s, recv_buf, sizeof(recv_buf), 0);
-    if (bytes_received > 0) {
-      recv_buf[bytes_received] = '\0';  // Properly terminate the string
-      fprintf(stdout, "Received echo: %s", recv_buf);
+    /* abertura ativa */
+    fprintf(stdout, "simplex-talk: opening %s socket\n", protocol);
+    if ((s = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
+      perror("simplex-talk: socket");
+      exit(1);
     }
 
+    fprintf(stdout, "simplex-talk: connecting\n");
+    if (connect(s, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
+      fprintf(stderr, "simplex-talk: connection error\n");
+      perror("simplex-talk: connect");
+      close(s);
+      exit(1);
+    }
+
+    /*laço principal: obtém e envia linhas de texto */
+    fprintf(stdout, "Waiting for input ...\n");
     fflush(stdout);
+
+    while (fgets(buf, sizeof(buf), stdin)) {
+      buf[MAX_LINE - 1] = '\0';
+      len = strlen(buf) + 1;
+
+      ssize_t bytes_sent = send(s, buf, len, 0);
+      fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
+
+      char recv_buf[MAX_LINE];
+      ssize_t bytes_received = recv(s, recv_buf, sizeof(recv_buf), 0);
+      if (bytes_received > 0) {
+        recv_buf[bytes_received] = '\0';  // Properly terminate the string
+        fprintf(stdout, "Received echo: %s", recv_buf);
+      }
+
+      fflush(stdout);
+    }
+
+  } else if (strcmp(protocol, "UDP") == 0) {
+    fprintf(stdout, "simplex-talk: using UDP protocol\n");
+
+    /* Create UDP socket */
+    if ((s = socket(PF_INET, SOCK_DGRAM, 0)) < 0) {
+      perror("simplex-talk: socket");
+      exit(1);
+    }
+
+    fprintf(stdout, "Waiting for input ...\n");
+    fflush(stdout);
+
+    while (fgets(buf, sizeof(buf), stdin)) {
+      buf[MAX_LINE - 1] = '\0';
+      len = strlen(buf) + 1;
+
+      /* Send message to server */
+      ssize_t bytes_sent = send(s, buf, len, 0);
+      fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
+
+      /* Receive echo from server */
+      char recv_buf[MAX_LINE];
+      socklen_t sin_len = sizeof(sin);
+      ssize_t bytes_received = recv(s, recv_buf, sizeof(recv_buf), 0);
+
+      if (bytes_received > 0) {
+        recv_buf[bytes_received] = '\0';
+        fprintf(stdout, "Received echo: %s", recv_buf);
+      } else if (bytes_received < 0) {
+        perror("simplex-talk: recv");
+      }
+
+      fflush(stdout);
+    }
+  } else {
+    fprintf(stdout, "simplex-talk: unknown protocol: %s. Closing the client\n",
+            protocol);
+    exit(1);
   }
 
   close(s);
