@@ -104,20 +104,22 @@ int main(int argc, char* argv[]) {
       buf[MAX_LINE - 1] = '\0';
       len = strlen(buf) + 1;
 
-      /* Send message to server */
-      ssize_t bytes_sent = send(s, buf, len, 0);
+      /* Send message to server using sendto() */
+      ssize_t bytes_sent =
+          sendto(s, buf, len, 0, (struct sockaddr*)&sin, sizeof(sin));
       fprintf(stdout, "simplex-talk: sent %zd bytes\n", bytes_sent);
 
-      /* Receive echo from server */
+      /* Receive echo from server using recvfrom() */
       char recv_buf[MAX_LINE];
       socklen_t sin_len = sizeof(sin);
-      ssize_t bytes_received = recv(s, recv_buf, sizeof(recv_buf), 0);
+      ssize_t bytes_received = recvfrom(s, recv_buf, sizeof(recv_buf), 0,
+                                        (struct sockaddr*)&sin, &sin_len);
 
       if (bytes_received > 0) {
         recv_buf[bytes_received] = '\0';
         fprintf(stdout, "Received echo: %s", recv_buf);
       } else if (bytes_received < 0) {
-        perror("simplex-talk: recv");
+        perror("simplex-talk: recvfrom");
       }
 
       fflush(stdout);

@@ -1,9 +1,12 @@
+#include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 #define SERVER_PORT 54321
 #define MAX_PENDING 5
@@ -94,8 +97,11 @@ int main(int argc, char* argv[]) {
     socklen_t client_len = sizeof(client_addr);
 
     while (1) {
-      // Use recvfrom() instead of recv() for UDP
-      len = recvfrom(s, buf, sizeof(buf), 0, (struct sockaddr*)&client_addr,
+      memset(&client_addr, 0, sizeof(client_addr));  // Initialize client_addr
+      client_len = sizeof(client_addr);              
+      memset(buf, 0, sizeof(buf));
+
+      len = recvfrom(s, buf, sizeof(buf) - 1, 0, (struct sockaddr*)&client_addr,
                      &client_len);
 
       if (len < 0) {
@@ -119,7 +125,8 @@ int main(int argc, char* argv[]) {
       }
     }
   } else {
-    fprintf(stdout, "simplex-talk: unknown protocol: %s. Closing the server\n", protocol);
+    fprintf(stdout, "simplex-talk: unknown protocol: %s. Closing the server\n",
+            protocol);
     exit(1);
   }
 
