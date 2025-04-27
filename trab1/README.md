@@ -29,7 +29,7 @@ Exemplo:
 ./run_local.sh 5 udp
 ```
 # ./run_server.sh
-Esse script precisa apenas do 1 parametro, o protocolo TCP/UDP
+Esse script precisa apenas de 1 parametro, o protocolo TCP/UDP
 Exemplo:
 
 ```shell
