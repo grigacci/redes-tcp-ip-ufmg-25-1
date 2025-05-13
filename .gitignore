@@ -17,5 +17,11 @@
 *.make
 *.marks
 *.dir
+*.fls
+*.fdb_latexmk
+*.fdb
+ed3/*.bib
+ed2/*.bib
+ed1/*.bib
 build/
 .vscode/
