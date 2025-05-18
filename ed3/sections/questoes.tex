@@ -57,7 +57,7 @@ Indique para qual próximo salto os pacotes com os seguintes endereços serão e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/tabela_3_14.png}
+    \includegraphics[width=0.9\textwidth]{images/tabela_3_20.png}
     \caption{Tabela 3.20 usada como referência para a questão} 
     \label{fig:questao_3_tabela}
 \end{figure}
@@ -73,4 +73,74 @@ interdomínios - MSDP” e “Árvores bidirecionais - BIDIR-PIM”) e respondam
     \item Compare brevemente as estratégias DVMRP e PIM-SM, mostrando as vantagens e
     desvantagens de cada uma.
     \item Que características adicionais o PIM-SSM traz em relação ao PIM-SM?
+\end{enumerate}
+
+\textbf{Resposta:}
+\begin{enumerate}[label=\alph*.]
+    \item A prevenção de loops de roteamento é a principal preocupação, garantindo que pacotes não sejam replicados indefinidamente. Para isso, os protocolos multicast utilizam:\\
+Verificação RPF (Reverse Path Forwarding): Confere se a interface de entrada do pacote é a mesma usada para rotas unicast até a origem, descartando pacotes com caminhos inválidos.\\
+Escopo administrativo: Limita o alcance de endereços multicast específicos para evitar vazamentos entre domínios.\\
+Árvores de distribuição: Construídas com base no caminho mais curto (SPT) ou em árvores compartilhadas (RP), minimizando replicações desnecessárias\\
+
+\item Papel do IGMP no multicast IP
+O IGMP (Internet Group Management Protocol) gerencia a associação de hosts a grupos multicast:
+
+Ingresso em grupos: Hosts enviam mensagens Membership Report para solicitar entrada em um grupo (endereço 224.0.0.0/4).
+
+Consulta periódica: Roteadores enviam Membership Query para verificar interesse contínuo dos hosts.
+
+Controle de saída: Em IGMPv2+, hosts podem enviar Leave Group para sair de um grupo, otimizando o uso de largura de banda.
+
+Filtragem de fontes: IGMPv3 permite que hosts especifiquem quais origens aceitam (ex: permitir apenas tráfego de S1 para o grupo G)
+
+\item Comparação entre DVMRP e PIM-SM
+\begin{table}[ht]
+\centering
+\caption{Comparação entre DVMRP e PIM-SM}
+\label{tab:multicast}
+\begin{tabular}{|l|p{6cm}|p{6cm}|}
+\hline
+\textbf{Critério} & \textbf{DVMRP} & \textbf{PIM-SM} \\ 
+\hline
+Estratégia & Modo denso (flood-and-prune) & Modo esparso (junção explícita via RP) \\
+\hline
+Eficiência & Ideal para redes densas, mas ineficiente em redes esparsas & Reduz inundação usando RP como ponto central \\
+\hline
+Complexidade & Mantém tabela de roteamento própria & Usa tabela unicast existente \\
+\hline
+Escalabilidade & Limitada (alto overhead de controle) & Superior (adequado para redes grandes) \\
+\hline
+Flexibilidade & Suporta apenas árvores (S,G) & Permite transição entre (*,G) e (S,G) \\
+\hline
+Vantagens & - & Menor consumo de banda em redes esparsas, independência do protocolo unicast \\
+\hline
+Desvantagens & Gera tráfego excessivo em redes esparsas & Dependência inicial do RP \\
+\hline
+\end{tabular}
+\end{table}
+\newpage
+
+\textbf{Vantagens do PIM-SM:}
+
+Menor consumo de largura de banda em redes esparsas.
+
+Independência do protocolo unicast subjacente.
+
+\textbf{Desvantagens do DVMRP:}
+
+Gera tráfego excessivo em redes esparsas.
+
+Não escala bem para redes complexas
+
+\item O PIM-SSM (Source-Specific Multicast) introduz melhorias em relação ao PIM-SM:
+
+Eliminação do RP: Conexões são estabelecidas diretamente entre receptores e fontes usando pares (S,G), removendo a dependência de um ponto único de falha.
+
+Segurança reforçada: Receptores especificam explicitamente a fonte permitida, impedindo ataques com tráfego de origens não autorizadas.
+
+Redução de overhead: Não requer mensagens de registro ou descoberta de fontes (MSDP).
+
+Adequação a aplicações 1:N: Ideal para transmissão de TV/IP ou streaming, onde há uma única fonte para múltiplos receptores.
+
+Exemplo: Em um serviço de streaming, um cliente solicita o canal (S=192.0.2.10, G=232.1.1.1). O roteador encaminha o tráfego apenas dessa fonte, ignorando outras
 \end{enumerate}
