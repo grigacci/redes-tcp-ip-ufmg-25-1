@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ARQUIVOS RELACIONADOS INCLUIDOS
+
+% pacotes customizados
+\input{resources/packages.tex}
+
+% comandos customizados
+\input{resources/custom_commands.tex}
+
+\addbibresource{resources/bibliografia.bib}
+
+\usepackage{placeins}
+\usepackage{longtable}
+\usepackage{tabularray}
+
+\usepackage{array}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{gensymb}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PARAMETROS DO DOCUMENTO
+
+% titulo do documento
+\titulo{Estudos dirigidos redes TCP/IP}
+
+% subtitulo do documento
+% 	*Veja que o simbolo '~' não é renderizado, se tratando de um 'placeholder'.
+\subtitulo{Estudo dirigido em grupo}
+
+% adicione a descricao do trabalho que aparece na contra-capa
+\descricao{Estudo dirigido 3}
+
+% nome dos autores. Separe-os por '\\'
+\autores{	Guilherme Astolfo Rigacci \\ 
+			Augusto Ribeiro\\
+            Matheus Miranda
+}
+	
+% departamento
+\departamento{Departamento de Engenharia Eletrônica}	
+
+% professor
+\professor{Prof. Luciano de Errico}
+
+% codigo da disciplina
+\disciplina{ELT091}
+
+% turma
+\turma{TEE}
+	
+% data do documento
+\data{\today}	
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INICIO DO DOCUMENTO
+\begin{document}
+\begin{titlepage}
+
+\input{resources/front_page.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% *COLOQUE SUAS SEÇÕES TEXTUAIS AQUI
+
+\input{sections/questoes}
+%\input{sections/conclusao}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% bibliografia
+%\printbibliography
+
+
+\end{document}

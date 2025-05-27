@@ -1,0 +1,66 @@
+
+
+% --- CAPA
+% alterando a cor
+\pagecolor{redUfmg}
+%\afterpage{white}
+
+\colorlet{saved}{.}
+\color{white}
+\afterpage{\color{saved}}
+
+
+\center
+\textsc{\Large Universidade Federal de Minas Gerais}\\[0.2cm] 
+\textsc{\large \docDepartamento}\\[1.0cm] 
+
+\vfill
+\includegraphics[scale = 2]{resources/logo.png}\\[1cm]
+\vfill
+
+\textsc{\large \docDisciplina -- Turma \docTurma} \\ [0.5cm]
+\textsc{\Large \docTitulo} \\ 
+\textsc{\large \docSubtitulo} \\ [0.5cm]
+\HRule \\[1.0cm]
+
+\flushleft \Large
+\docAutores
+\center {\docDate}\\[2cm]
+
+\newpage
+% --- CONTRA CAPA
+\color{black}
+\pagecolor{white}
+
+
+\begin{titlepage}
+\vfill
+\begin{center} 
+{\Huge  \docTitulo} \\ 
+{\Large \docSubtitulo} \\[1cm]
+\hspace{.45\textwidth}
+\begin{minipage}{.5\textwidth}
+
+	{\normalsize \docDescricao} \\
+	\vspace{5pt}
+	
+	{\normalsize Autores: \\ \docAutores } \\
+	\vspace{2.5pt}
+	
+	{\normalsize \docProfessor }
+
+\end{minipage}
+\vfill
+\docDate
+\end{center}
+\end{titlepage}
+\vfill 
+\end{titlepage}
+
+
+% --- SUMARIO
+\tableofcontents
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\setcounter{page}{0}
+
+\pagebreak

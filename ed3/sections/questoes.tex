@@ -28,11 +28,17 @@ A seguir, apresentamos as etapas do algoritmo de estado de enlace (Dijkstra) apl
 \begin{tabular}{|c|l|l|p{8.8cm}|}
 \hline
 \textbf{Etapa} & \textbf{Confirmado} & \textbf{Tentativa} & \textbf{Comentários} \\ \hline
-1 & (A,--,--) & (D,2,A), (B,5,A) & LSP de A indica vizinhos D (custo 2) e B (custo 5). \\ \hline
-2 & (A,--,--), (D,2,A) & (B,5,A), (E,7,D) & D é o nó de menor custo. Através de D, E é alcançável com custo total 7 (2+5). \\ \hline
-3 & (A,--,--), (D,2,A), (B,5,A) & (E,7,D), (C,9,B) & B tem menor custo. B conecta-se a C com custo adicional de 4, totalizando 9. \\ \hline
-4 & (A,--,--), (D,2,A), (B,5,A), (E,7,D) & (C,8,E) & E tem menor custo. E conecta-se a C com custo adicional de 1, totalizando 8. Melhor que custo anterior. \\ \hline
-5 & (A,--,--), (D,2,A), (B,5,A), (E,7,D), (C,8,E) & -- & C é o último nó. Tabela de roteamento finalizada. \\ \hline
+1 & (A,0,-) &  & Inicializa com o nó A. \\ \hline
+2 & (A,0,-) & (D,2,D), (B,5,B) & Vizinhos diretos de A são D (custo 2, primeiro salto D) e B (custo 5, primeiro salto B). Adicionados à Tentativa. \\ \hline
+3 & (A,0,-), (D,2,D) & (B,4,D), (E,7,D) & D é o nó de menor custo em Tentativa (custo 2). Adicionado a Confirmado.
+Para B: custo via D é 2 (para D) + 2 (D-B) = 4 (primeiro salto D). Melhor que (B,5,B).
+Para E: custo via D é 2 (para D) + 5 (D-E) = 7 (primeiro salto D). \\ \hline
+4 & (A,0,-), (D,2,D), (B,4,D) & (E,6,D), (C,8,D) & B é o nó de menor custo em Tentativa (custo 4). Adicionado a Confirmado.
+Para E: custo via B (caminho A-D-B) é 4 (para B) + 2 (B-E) = 6 (primeiro salto D). Melhor que (E,7,D).
+Para C: custo via B (caminho A-D-B) é 4 (para B) + 4 (B-C) = 8 (primeiro salto D). \\ \hline
+5 & (A,0,-), (D,2,D), (B,4,D), (E,6,D) & (C,7,D) & E é o nó de menor custo em Tentativa (custo 6). Adicionado a Confirmado.
+Para C: custo via E (caminho A-D-B-E) é 6 (para E) + 1 (E-C) = 7 (primeiro salto D). Melhor que (C,8,D). \\ \hline
+6 & (A,0,-), (D,2,D), (B,4,D), (E,6,D), (C,7,D) &  & C é o nó de menor custo em Tentativa (custo 7). Adicionado a Confirmado. Nenhum nó restante em Tentativa. Algoritmo concluído. \\ \hline
 \end{tabular}
 }
 \caption{Etapas do algoritmo de busca direta (Dijkstra) para o nó A.}
