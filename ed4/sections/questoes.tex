@@ -14,7 +14,7 @@ como isso funciona e quais são as vantagens.
     \item  Em que consiste o “roteamento explícito”, que vantagens ele traz e como o
 MPLS pode implementá-lo?
     \item Explique como o MPLS pode ser usado para implementar uma VPN de camada 3.
-\end{enumerate}\\
+\end{enumerate}
 
 \noindent
 \textbf{Resposta:} \\
@@ -32,8 +32,7 @@ bytes;
 bytes;
     \item para o cenário em (d), qual seria o tamanho mínimo de janela para que se
 conseguisse atingir 100\% de utilização? 
-\end{enumerate}\\
-
+\end{enumerate}
 
 \noindent
 \textbf{Resposta:}
@@ -49,3 +48,11 @@ respostas.\\
 
 \noindent
 \textbf{Resposta:}
+
+A ideia central, conforme o artigo original, é que funções específicas de uma aplicação devem ser implementadas nas extremidades (nos sistemas finais ou aplicações) e não nos nós intermediários da rede, a menos que haja razões de desempenho muito fortes para fazê-lo.
+
+A lógica é que os pontos finais (as aplicações) são os únicos que têm o conhecimento completo dos requisitos da função. Tentar implementar essa funcionalidade em um nível inferior (na rede) muitas vezes resulta em uma implementação incompleta, redundante ou que não atende plenamente às necessidades da aplicação. A rede, nesse contexto, deve focar em sua tarefa primária: mover dados de um ponto a outro da forma mais eficiente e geral possível.
+
+Desta forma, a expressão do sucesso do argumento ser a Internet é válida, pois a arquitetura da Internet foi projetada com base nesse princípio. A rede é simples e flexível, permitindo que novas aplicações sejam desenvolvidas sem a necessidade de modificações na infraestrutura da rede. Isso possibilitou uma inovação rápida e contínua, resultando em uma vasta gama de serviços e aplicações que utilizam a Internet.
+
+Logo, a implementação de um protocolo fim a fim, se provou como uma abordagem eficaz para garantir que as aplicações possam evoluir e se adaptar às necessidades dos usuários sem depender de mudanças na infraestrutura da rede. 
