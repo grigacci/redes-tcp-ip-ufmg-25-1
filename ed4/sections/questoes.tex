@@ -37,6 +37,110 @@ conseguisse atingir 100\% de utilização?
 \noindent
 \textbf{Resposta:}
 
+Primeiro, vamos definir algumas variáveis e calcular valores comuns que serão utilizados em todos os itens:
+\begin{itemize}
+    \item Tamanho do pacote ($L$): 1000 bytes.
+    Como 1 byte = 8 bits, então $L = 1000 \times 8 \text{ bits} = 8000 \text{ bits}$.
+    \item Largura de banda (BW ou $R$): 1 Mbps.
+    Como 1 Mbps = $1 \times 10^6$ bits por segundo (bps), então $R = 1 \times 10^6 \text{ bps}$.
+    \item Tempo de transmissão do pacote ($T_{trans}$):
+    Este é o tempo necessário para colocar todos os bits de um pacote no link.
+    É calculado como $T_{trans} = \frac{L}{R}$.
+    $T_{trans} = \frac{8000 \text{ bits}}{1 \times 10^6 \text{ bps}} = 0.008 \text{ segundos} = 8 \text{ milissegundos (ms)}$.
+\end{itemize}
+A vazão (Throughput, $Th$) é a taxa efetiva de transferência de dados. Ela pode ser calculada como o produto da Utilização do canal ($U$) pela Largura de Banda ($R$): $Th = U \times R$.
+
+\vspace{0.5cm} % Espaçamento antes do item a
+
+\begin{enumerate}[label=\alph*.]
+    \item \textbf{Stop and Wait, RTT = 8 ms, BW = 1 Mbps, tamanho do pacote = 1000 bytes}
+    \begin{itemize}
+        \item Round-Trip Time (RTT) = 8 ms = 0.008 s.
+        \item Tempo de transmissão ($T_{trans}$) = 8 ms = 0.008 s (calculado acima).
+        \item No protocolo Stop and Wait, o transmissor envia um pacote e espera por um reconhecimento (ACK) antes de enviar o próximo. O tempo total para um ciclo completo (enviar pacote e receber ACK) é $RTT + T_{trans}$. Durante este ciclo, o transmissor está efetivamente transmitindo dados apenas durante $T_{trans}$.
+        \item A utilização ($U_{SW}$) é a fração do tempo em que o transmissor está ocupado:
+        $U_{SW} = \frac{T_{trans}}{RTT + T_{trans}}$
+        \item Substituindo os valores:
+        $U_{SW} = \frac{0.008 \text{ s}}{0.008 \text{ s} + 0.008 \text{ s}} = \frac{0.008 \text{ s}}{0.016 \text{ s}} = 0.5$
+        \item A vazão ($Th_{SW}$) é:
+        $Th_{SW} = U_{SW} \times R = 0.5 \times 1 \text{ Mbps} = \mathbf{0.5 \text{ Mbps}}$ (ou 500 kbps).
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Go Back N, W = 2 pacotes, RTT = 8 ms, BW = 1 Mbps, tamanho do pacote = 1000 bytes}
+    \begin{itemize}
+        \item Janela de envio (W) = 2 pacotes.
+        \item RTT = 8 ms = 0.008 s.
+        \item $T_{trans}$ = 8 ms = 0.008 s.
+        \item No Go Back N, o transmissor pode enviar até $W$ pacotes sem esperar por ACKs individuais. O canal pode ser mantido ocupado se a quantidade de dados enviados dentro da janela ($W \times L$) for suficiente para preencher o "pipe" de dados durante o tempo $RTT + T_{trans}$.
+        \item A utilização ($U_{GBN}$) é dada por (considerando um cenário ideal sem perdas):
+        $U_{GBN} = \min\left(1, \frac{W \times T_{trans}}{RTT + T_{trans}}\right)$
+        \item Primeiro, calculamos $W \times T_{trans}$:
+        $W \times T_{trans} = 2 \times 0.008 \text{ s} = 0.016 \text{ s}$.
+        \item E $RTT + T_{trans}$:
+        $RTT + T_{trans} = 0.008 \text{ s} + 0.008 \text{ s} = 0.016 \text{ s}$.
+        \item Como $W \times T_{trans} = RTT + T_{trans}$ (ou seja, $0.016 \text{ s} = 0.016 \text{ s}$), o transmissor pode manter o canal 100\% ocupado.
+        $U_{GBN} = \frac{0.016 \text{ s}}{0.016 \text{ s}} = 1$
+        \item A vazão ($Th_{GBN}$) é:
+        $Th_{GBN} = U_{GBN} \times R = 1 \times 1 \text{ Mbps} = \mathbf{1 \text{ Mbps}}$.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Stop and Wait, RTT = 500 ms, BW = 1 Mbps, tamanho do pacote = 1000 bytes}
+    \begin{itemize}
+        \item RTT = 500 ms = 0.5 s.
+        \item $T_{trans}$ = 8 ms = 0.008 s.
+        \item Usando a mesma fórmula para $U_{SW}$ do item (a):
+        $U_{SW} = \frac{T_{trans}}{RTT + T_{trans}}$
+        \item Substituindo os valores:
+        $U_{SW} = \frac{0.008 \text{ s}}{0.5 \text{ s} + 0.008 \text{ s}} = \frac{0.008 \text{ s}}{0.508 \text{ s}} \approx 0.01574803$
+        \item A vazão ($Th_{SW}$) é:
+        $Th_{SW} = U_{SW} \times R \approx 0.01574803 \times 1 \text{ Mbps} \approx \mathbf{0.015748 \text{ Mbps}}$ (ou aproximadamente 15.75 kbps).
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Go Back N, W = 2 pacotes, RTT = 500 ms, BW = 1 Mbps, tamanho do pacote = 1000 bytes}
+    \begin{itemize}
+        \item Janela de envio (W) = 2 pacotes.
+        \item RTT = 500 ms = 0.5 s.
+        \item $T_{trans}$ = 8 ms = 0.008 s.
+        \item Usando a mesma fórmula para $U_{GBN}$ do item (b):
+        $U_{GBN} = \min\left(1, \frac{W \times T_{trans}}{RTT + T_{trans}}\right)$
+        \item Calculando $W \times T_{trans}$:
+        $W \times T_{trans} = 2 \times 0.008 \text{ s} = 0.016 \text{ s}$.
+        \item Calculando $RTT + T_{trans}$:
+        $RTT + T_{trans} = 0.5 \text{ s} + 0.008 \text{ s} = 0.508 \text{ s}$.
+        \item Como $W \times T_{trans} < RTT + T_{trans}$ (ou seja, $0.016 \text{ s} < 0.508 \text{ s}$), a janela não é grande o suficiente para manter o pipe cheio.
+        $U_{GBN} = \frac{0.016 \text{ s}}{0.508 \text{ s}} \approx 0.03149606$
+        \item A vazão ($Th_{GBN}$) é:
+        $Th_{GBN} = U_{GBN} \times R \approx 0.03149606 \times 1 \text{ Mbps} \approx \mathbf{0.031496 \text{ Mbps}}$ (ou aproximadamente 31.50 kbps).
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Para o cenário em (d), qual seria o tamanho mínimo de janela para que se conseguisse atingir 100\% de utilização?}
+    \begin{itemize}
+        \item Temos RTT = 500 ms = 0.5 s.
+        \item E $T_{trans}$ = 8 ms = 0.008 s.
+        \item Para atingir 100\% de utilização ($U=1$), o transmissor deve ser capaz de enviar pacotes continuamente, preenchendo o "pipe" de comunicação. O tempo total do ciclo para receber um ACK para o primeiro pacote de uma janela (e assim poder deslizar a janela) é $RTT + T_{trans}$.
+        \item Durante este tempo $RTT + T_{trans}$, o número de pacotes que poderiam ter sido transmitidos se o canal estivesse continuamente ocupado é $\frac{RTT + T_{trans}}{T_{trans}}$.
+        \item Para garantir que o pipe esteja sempre cheio, a janela $W$ deve ser grande o suficiente para cobrir todos esses pacotes.
+        \item $W_{min} = \frac{RTT + T_{trans}}{T_{trans}}$
+        \item Substituindo os valores:
+        $W_{min} = \frac{0.5 \text{ s} + 0.008 \text{ s}}{0.008 \text{ s}} = \frac{0.508 \text{ s}}{0.008 \text{ s}} = 63.5$
+        \item Como o tamanho da janela ($W$) deve ser um número inteiro de pacotes, e precisamos garantir que o pipe esteja sempre cheio (ou seja, que o transmissor possa enviar pelo menos $63.5$ pacotes antes de ter que parar para esperar um ACK), devemos arredondar para cima.
+        \item Portanto, o tamanho mínimo da janela $W_{min}$ é $\lceil 63.5 \rceil = \mathbf{64 \text{ pacotes}}$.
+        \item \textit{Verificação alternativa usando Produto Largura de Banda-Atraso (BDP):}
+        O BDP é a quantidade de dados que podem estar "em trânsito" no link: $BDP = R \times RTT = 1 \times 10^6 \text{ bps} \times 0.5 \text{ s} = 500000 \text{ bits}$.
+        O número de pacotes que "cabem" no pipe é $N_{pipe} = \frac{BDP}{L} = \frac{500000 \text{ bits}}{8000 \text{ bits/pacote}} = 62.5$ pacotes.
+        Para manter o pipe cheio continuamente, a janela de envio $W$ deve ser grande o suficiente para cobrir esses $N_{pipe}$ pacotes mais o pacote que está sendo atualmente transmitido. Uma forma comum de expressar isso é $W \ge \frac{R \times RTT}{L} + 1$ (onde o $+1$ representa o pacote que está sendo transmitido enquanto os ACKs dos pacotes no pipe ainda não chegaram).
+        $W \ge 62.5 + 1 = 63.5$. Arredondando para cima, $W_{min} = 64$ pacotes. A fórmula $W_{min} = \lceil \frac{RTT + T_{trans}}{T_{trans}} \rceil$ é mais precisa pois representa diretamente o número de "slots" de transmissão de pacote que ocorrem em um ciclo RTT + Ttrans.
+    \end{itemize}
+\end{enumerate}
+
 
 \subsection{Questão 3}
 Leia o artigo "End-to-End Arguments in System Design" e responda:
