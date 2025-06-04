@@ -18,7 +18,42 @@ MPLS pode implementá-lo?
 
 \noindent
 \textbf{Resposta:} \\
+\begin{enumerate}[label=\alph*.]
+    \item \textbf{Princípios básicos da tecnologia ATM:} \\
+    A tecnologia ATM (Asynchronous Transfer Mode) foi projetada para integrar diferentes tipos de tráfego (voz, vídeo, dados) em uma rede unificada, com baixa latência e alta previsibilidade. Seu funcionamento baseia-se no uso de comutação de pacotes fixos de 53 bytes (células), o que facilita o tratamento em hardware e garante desempenho constante. ATM usa comutação orientada à conexão, sendo necessário estabelecer um caminho virtual antes da transmissão de dados.\\
 
+    \textbf{Por que ATM não se tornou dominante:} \\
+    ATM foi superada por tecnologias baseadas em IP devido à sua complexidade, alto custo de implementação e necessidade de redes especializadas. Além disso, o avanço de redes Ethernet de alta velocidade e o crescimento da Internet, baseada em protocolos IP, tornaram o modelo de transporte unificado do ATM menos atrativo. A flexibilidade, simplicidade e ampla adoção do IP acabaram prevalecendo.
+
+    \item \textbf{Roteamento baseado em rótulos no MPLS:} \\
+    O MPLS (Multiprotocol Label Switching) funciona atribuindo um rótulo (label) a cada pacote no início do seu caminho na rede. Em vez de analisar o cabeçalho IP em cada salto, os roteadores (neste caso chamados de LSRs – Label Switch Routers) usam esse rótulo para encaminhar o pacote de forma eficiente, comutando com base em tabelas de rótulos pré-estabelecidas.\\
+
+    \textbf{Vantagens:}
+    \begin{itemize}
+        \item Redução da carga de processamento nos roteadores.
+        \item Encaminhamento mais rápido.
+        \item Suporte eficiente a QoS (Qualidade de Serviço).
+        \item Capacidade de engenharia de tráfego (traffic engineering).
+        \item Integração com múltiplos protocolos de rede.
+    \end{itemize}
+
+    \item \textbf{Roteamento explícito e sua implementação via MPLS:} \\
+    Roteamento explícito é a técnica onde o caminho completo ou parcial que o pacote deve seguir é definido previamente, em vez de ser calculado dinamicamente por protocolos de roteamento tradicionais.\\
+
+    \textbf{Vantagens:}
+    \begin{itemize}
+        \item Melhor controle sobre o tráfego na rede.
+        \item Otimização da utilização de links.
+        \item Redução de congestionamento e melhoria de desempenho.
+    \end{itemize}
+
+    O MPLS permite o roteamento explícito ao permitir que os rótulos sejam atribuídos com base em caminhos específicos configurados manualmente ou por algoritmos de engenharia de tráfego (por exemplo, usando RSVP-TE ou CR-LDP).
+
+    \item \textbf{Implementação de VPN de camada 3 com MPLS:} \\
+    O MPLS pode ser usado para construir VPNs de camada 3 (IP VPNs) através da utilização de rótulos empilhados. Cada pacote IP do cliente é encapsulado com dois rótulos MPLS: um identifica o túnel (path) até o roteador de borda de saída (PE), e o outro identifica a VPN específica (via tabelas de encaminhamento VRF – Virtual Routing and Forwarding).\\
+
+    Isso permite isolar o tráfego entre diferentes clientes, manter tabelas de roteamento separadas e suportar múltiplos serviços sobre uma mesma infraestrutura compartilhada, de maneira segura e escalável.
+\end{enumerate}
 
 \subsection{Questão 2}
  Calcule a vazão para cada um dos casos abaixo:
