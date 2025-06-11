@@ -1,0 +1,66 @@
+\section{Questões}\label{sec:questoes}
+
+
+\subsection{Questão 1}
+Leiam as Seções 5.2.8 e 5.2.10 do livro-texto e respondam:
+\begin{enumerate}[label=\alph*.]
+    \item O TCP é um protocolo que vem evoluindo com o tempo. Um exemplo disso são as
+extensões do TCP. Listem cada uma das extensões descritas no texto do livro,
+detalhando que problema ela soluciona e como ela opera.
+    \item O livro texto discute as decisões de projeto que definiram as características
+do TCP e cita um outro protocolo de transporte padronizado pelo IETF, o SCTP,
+que coexiste com o TCP e o UDP. Pesquisem e expliquem as diferenças do SCTP para
+o TCP e por que ele não é largamente utilizado.
+\end{enumerate}\\
+
+
+
+\noindent
+\textbf{Resposta:} \\
+
+
+\subsection{Questão 2}
+ Ao fechar uma conexão TCP, por que a expiração do tempo limite de dois tempos de vida do
+segmento não é necessária na transição de LAST_ACK para CLOSED?\\
+
+
+\noindent
+\textbf{Resposta:}
+
+
+\subsection{Questão 3}
+Um emissor em uma conexão TCP que recebe uma janela anunciada 0 sonda o receptor
+periodicamente para descobrir quando a janela se torna diferente de zero. Por que o receptor
+precisaria de um temporizador extra se ele fosse responsável por informar que sua janela
+anunciada se tornou diferente de 0 (ou seja, se o transmissor não fizesse a sondagem)?\\
+
+\noindent
+\textbf{Resposta:}
+
+\subsection{Questão 4}
+O campo de número de sequência no cabeçalho TCP tem 32 bits de extensão, que é grande o
+suficiente para cobrir mais de 4 bilhões de dados. Mesmo que todos esses bytes nunca sejam
+transferidos em uma única conexão, por que o número de sequência ainda pode se reiniciar
+ciclicamente de 2^{32}-1 para 0?\\
+
+\noindent
+\textbf{Resposta:}
+
+\subsection{Questão 5}
+Você foi encarregado de projetar um protocolo de fluxo de bytes confiável que use janela
+deslizante (como o TCP). Esse protocolo será executado em uma rede de 100 Mbps. O RTT da
+rede é de 100 ms, e o tempo de vida máximo dos segmentos é de 30 segundos.
+Quantos bits você incluiria nos campos JanelaAnunciada e NúmeroSeq do cabeçalho do seu
+protocolo?\\
+
+\noindent
+\textbf{Resposta:}
+
+\subsection{Questão 6}
+Quando o TCP envia um 〈SYN, NúmeroSeq=x〉 ou 〈FIN, NúmeroSeq=x〉, o ACK correspondente
+possui Confirmação=x+1; ou seja, SYNs e FINs ocupam uma unidade no espaço do número
+de sequência. Isso é necessário? Se for, dê um exemplo de uma ambiguidade que surgiria se a
+Confirmação correspondente fosse x em vez de x+1; se não, explique por quê.\\
+
+\noindent
+\textbf{Resposta:}
