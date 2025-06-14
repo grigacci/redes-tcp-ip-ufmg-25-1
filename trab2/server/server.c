@@ -6,6 +6,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <ctype.h>
 #include <unistd.h>
 
 #define SERVER_PORT 54321
