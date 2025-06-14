@@ -1,0 +1,14 @@
+48. Escreva um programa de teste que use a interface de sockets para enviar mensagens entre um
+par de estações de trabalho Unix conectadas por alguma tecnologia de LAN (por exemplo,
+Ethernet, ou 802.11). Use esse programa de teste para realizar as experiências a seguir.
+
+a. Meça a latência de ida e volta do TCP e do UDP para diferentes tamanhos de mensagem (por
+exemplo, 1 byte, 100 bytes, 200 bytes, ..., 1.000 bytes).
+
+b. Meça a vazão do TCP e do UDP para mensagens de 1 KB, 2 KB, 3 KB, ..., 32 KB. Represente
+graficamente a vazão medida como uma função do tamanho da mensagem.
+
+c. Meça a vazão do TCP enviando 1 MB de dados de um host para outro. Faça isso em um laço
+que envie uma mensagem de um certo tamanho, por exemplo, 1.024 iterações de um laço
+que envia mensagens de 1 KB. Repita a experiência com diferentes tamanhos de mensagem e
+represente os resultados graficamente.
