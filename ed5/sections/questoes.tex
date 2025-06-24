@@ -150,13 +150,36 @@ precisaria de um temporizador extra se ele fosse responsável por informar que s
 anunciada se tornou diferente de 0 (ou seja, se o transmissor não fizesse a sondagem)?\\
 
 \noindent
-\textbf{Resposta:}
+\textbf{Resposta:} \\
+A razão pela qual o emissor sonda o receptor em vez de esperar por uma notificação é para evitar uma condição de \textbf{deadlock} (impasse). 
+
+Se o receptor fosse o único responsável por anunciar uma nova janela (diferente de zero), um problema crítico surgiria se esse pacote de anúncio de janela fosse perdido na rede. Nesse cenário:
+\begin{enumerate}
+    \item O \textbf{emissor} recebeu uma janela de 0 e parou de enviar dados. Ele ficaria esperando passivamente por um anúncio de que a janela foi reaberta. 
+    \item O \textbf{receptor}, por sua vez, já teria enviado o anúncio de reabertura da janela e estaria esperando a chegada de novos dados do emissor. 
+\end{enumerate}
+
+Como o anúncio do receptor se perdeu, o emissor nunca saberia que pode voltar a transmitir. Como o emissor não pode enviar novos dados (sua janela é 0), ele não pode acionar nenhuma resposta (ACK) do receptor. Ambas as partes ficariam esperando indefinidamente uma pela outra, resultando em um deadlock.
+
+Para que o receptor pudesse quebrar esse impasse, ele precisaria de um \textbf{temporizador extra}. Este temporizador seria acionado após o envio de um anúncio de reabertura de janela. Se nenhum dado novo chegasse do emissor antes que o temporizador expirasse, o receptor teria que presumir que seu anúncio se perdeu e, então, reenviá-lo.
+
+O TCP evita essa complexidade adicional no receptor seguindo o princípio de projeto de "emissor inteligente/receptor burro" (\textit{smart sender/dumb receiver}).  A responsabilidade de quebrar o impasse é colocada no emissor, que já gerencia temporizadores de retransmissão. Ao sondar periodicamente o receptor com um pequeno pacote, o emissor garante que receberá uma resposta com o tamanho da janela atual, quebrando o potencial deadlock de forma robusta e mantendo o design do receptor mais simples. 
 
 \subsection{Questão 4}
 O campo de número de sequência no cabeçalho TCP tem 32 bits de extensão, que é grande o
 suficiente para cobrir mais de 4 bilhões de dados. Mesmo que todos esses bytes nunca sejam
 transferidos em uma única conexão, por que o número de sequência ainda pode se reiniciar
 ciclicamente de $2^{32}-1$ para 0?\\
+
+\noindent
+\textbf{Resposta:} \\
+O número de sequência do TCP pode reiniciar ciclicamente (dar a volta, ou "wrap around") de $2^{32}-1$ para 0 muito antes de 4 GiB de dados serem transferidos porque o \textbf{Número de Sequência Inicial (ISN - Initial Sequence Number) não começa em 0}. 
+
+A especificação do TCP exige que cada lado de uma conexão selecione um ISN \textbf{aleatoriamente} a partir do espaço de 32 bits.  O motivo para essa aleatoriedade é uma medida de segurança: proteger a conexão contra pacotes antigos e duplicados de uma instância anterior da mesma conexão (mesmo par de IPs e portas) que ainda possam estar "vagando" pela rede.  Se um ISN previsível fosse usado, esses pacotes antigos poderiam ser erroneamente aceitos pela nova conexão.
+
+Como o ISN é um número aleatório de 32 bits, ele pode, por acaso, ser um valor muito alto, próximo do limite de $2^{32}-1$. Por exemplo, se o ISN escolhido para uma conexão for $2^{32}-1000$, então, após a transferência de apenas 1001 bytes, o número de sequência irá ultrapassar $2^{32}-1$ e reiniciar em 0.
+
+Portanto, o reinício cíclico não está ligado à quantidade total de dados transferidos desde o byte 0, mas sim à quantidade de dados transferidos desde o ISN aleatório escolhido no início da conexão.
 
 \noindent
 \textbf{Resposta:}
