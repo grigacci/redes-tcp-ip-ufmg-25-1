@@ -181,24 +181,65 @@ Como o ISN é um número aleatório de 32 bits, ele pode, por acaso, ser um valo
 
 Portanto, o reinício cíclico não está ligado à quantidade total de dados transferidos desde o byte 0, mas sim à quantidade de dados transferidos desde o ISN aleatório escolhido no início da conexão.
 
-\noindent
-\textbf{Resposta:}
-
 \subsection{Questão 5}
-Você foi encarregado de projetar um protocolo de fluxo de bytes confiável que use janela
-deslizante (como o TCP). Esse protocolo será executado em uma rede de 100 Mbps. O RTT da
-rede é de 100 ms, e o tempo de vida máximo dos segmentos é de 30 segundos.
-Quantos bits você incluiria nos campos JanelaAnunciada e NúmeroSeq do cabeçalho do seu
-protocolo?\\
+Você foi encarregado de projetar um protocolo de fluxo de bytes confiável que use janela deslizante (como o TCP). Esse protocolo será executado em uma rede de 100 Mbps. O RTT da rede é de 100 ms e o tempo de vida máximo dos segmentos (MSL) é de 30 s.  
+Quantos bits você incluiria nos campos \textbf{Janela Anunciada} e \textbf{NúmeroSeq} do cabeçalho?
 
-\noindent
-\textbf{Resposta:}
+\noindent\textbf{Resposta:}
 
+Para dimensionar o campo \texttt{Janela Anunciada}, é necessário garantir que ele permita anunciar uma janela ao menos igual ao produto banda–retardo, ou seja, o número máximo de bytes que podem estar em trânsito pela rede sem confirmação (BDP — \textit{Bandwidth–Delay Product}). A conta é:
+
+\[
+\text{Banda} \times \text{RTT} = 100\times10^{6} \, \text{bit/s} \times 0{,}1\,\text{s} = 10^7\,\text{bits} = 1{,}25\times10^6\,\text{bytes}
+\]
+
+Sendo assim, o campo de janela deve ser capaz de representar ao menos 1,25 MB. O menor número inteiro $w$ tal que $2^w \geq 1{,}25 \times 10^6$ é:
+
+\[
+2^{20} = 1\,048\,576 < 1{,}25\times10^6 < 2^{21} = 2\,097\,152
+\]
+
+Portanto, \fbox{21 bits} são suficientes para representar a Janela Anunciada.
+
+Já para o campo \texttt{NúmeroSeq}, é necessário garantir que o espaço de sequência não se repita enquanto ainda existirem segmentos válidos na rede (por conta do MSL de 30 segundos). Durante esse tempo, a quantidade de dados possíveis de serem transmitidos é:
+
+\[
+100\times10^6 \, \text{bit/s} \times 30\,\text{s} = 3\times10^9\,\text{bits} = 375\,000\,000\,\text{bytes}
+\]
+
+Logo, buscamos o menor $N$ tal que $2^N > 375 \times 10^6$. Fazendo as potências de dois:
+
+\[
+2^{28} = 268\,435\,456 < 375\,000\,000 < 2^{29} = 536\,870\,912
+\]
+
+Portanto, o campo \texttt{NúmeroSeq} precisa de no mínimo \fbox{29 bits}. É comum, inclusive, utilizar 32 bits (como o TCP), por simplicidade e margem adicional.
+
+Como $2^{29} \gg 2^{21}$, a janela sempre será menor que metade do espaço de sequência, o que preserva a regra de segurança da janela deslizante (evitando confusão com dados antigos).
+
+\bigskip
 \subsection{Questão 6}
-Quando o TCP envia um \texttt{<SYN, NúmeroSeq=x>} ou \texttt{<FIN, NúmeroSeq=x>}, o ACK correspondente
-possui Confirmação=x+1; ou seja, SYNs e FINs ocupam uma unidade no espaço do número
-de sequência. Isso é necessário? Se for, dê um exemplo de uma ambiguidade que surgiria se a
-Confirmação correspondente fosse x em vez de x+1; se não, explique por quê.\\
+Quando o TCP envia \texttt{<SYN, NúmeroSeq = x>} ou \texttt{<FIN, NúmeroSeq = x>}, o ACK correspondente transporta \texttt{Confirmação = x + 1}; isto é, SYNs e FINs consomem uma posição no espaço de sequência.  
+Isso é necessário? Se sim, mostre uma ambiguidade que surgiria caso a confirmação fosse \texttt{x} em vez de \texttt{x+1}.
 
-\noindent
-\textbf{Resposta:}
+\noindent\textbf{Resposta:}
+
+Sim, é necessário que SYN e FIN ocupem uma posição no espaço de sequência para evitar ambiguidades com segmentos de dados que possam ser entregues fora de ordem ou retransmitidos.
+
+Suponha o seguinte cenário hipotético, onde o ACK de um SYN fosse simplesmente \texttt{x}, e não \texttt{x+1}:
+
+\begin{itemize}
+    \item O cliente envia \texttt{<SYN, Seq = 100>} para iniciar a conexão.
+    \item O servidor responde com \texttt{ACK = 100}.
+    \item O SYN original se perde, e o cliente o retransmite.
+    \item Enquanto isso, o servidor já enviou um segmento de dados com \texttt{Seq = 100}.
+\end{itemize}
+
+Nesse cenário, o cliente poderia receber o segmento de dados legítimo e o SYN duplicado, ambos com \texttt{Seq = 100}. Como o número de sequência é o mesmo, o cliente não tem como distinguir entre um dado novo e uma tentativa antiga de conexão. Isso pode levá-lo a tratar o SYN duplicado como dados inválidos, ou descartar os dados válidos achando que são retransmissões.
+
+Ao reservar uma posição no espaço de sequência para o SYN (isto é, ao exigir \texttt{ACK = x + 1}), garantimos que o primeiro byte de dados reais terá \texttt{Seq = x + 1}, eliminando qualquer possibilidade de colisão ou ambiguidade com segmentos de controle.
+
+O mesmo raciocínio vale para o FIN: consumindo uma posição na numeração, ele é tratado como um marcador exclusivo do final da conexão, sem chance de ser confundido com dados subsequentes ou retransmissões mal interpretadas.
+
+Portanto, a regra de somar 1 ao ACK de SYN e FIN é fundamental para manter a consistência, a detecção de duplicatas e a confiabilidade na comunicação orientada a fluxo, como no TCP.
+
