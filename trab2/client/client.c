@@ -1,4 +1,5 @@
-#include "client.h" // Assuming this contains your includes and constants
+#include "client.h" // Assuming this contains your includes, timers, and constants like MAX_PAYLOAD_SIZE, SERVER_PORT, MAX_MESSSAGES
+#include <unistd.h>     // For usleep
 
 // Forward declarations for your helper functions
 void generate_random_string(char *s, const int len);
@@ -99,8 +100,8 @@ int main(int argc, char* argv[]) {
         fprintf(stdout, "Sent %d messages, with size %d bytes using TCP protocol\n", sent_messages, msg_size);
         if (sent_messages > 0) {
             fprintf(stdout, "Total Time: %.2f [s] | Avg latency: %.2f [us] | Avg Throughput: %.2f [bps] / %.2f [kbps]\n",
-                    total_time / 1000000.0, total_time / sent_messages, sent_messages * msg_size * 8 /
-                    (total_time / 1000000.0), sent_messages * msg_size * 8 /
+                    total_time / 1000000.0, total_time / sent_messages, (double)sent_messages * msg_size * 8 /
+                    (total_time / 1000000.0), (double)sent_messages * msg_size * 8 /
                     (total_time / 1000.0));
         }
 
@@ -119,26 +120,76 @@ int main(int argc, char* argv[]) {
             exit(1);
         }
 
+        // Allocate a separate buffer for receiving to avoid overwriting the send buffer.
+        char* recv_buf = (char*)malloc(msg_size + 1);
+        if (!recv_buf) {
+            fprintf(stderr, "Failed to allocate memory for receive buffer\n");
+            free(buf);
+            exit(1);
+        }
+
         while (sent_messages < MAX_MESSSAGES) {
             start_timer(&timer);
-            sendto(s, buf, msg_size, 0, (struct sockaddr*)&sin, sizeof(sin));
+
+            // --- Sending Logic with Fragmentation ---
+            // This loop sends the message in chunks if it's too large for a single UDP packet.
+            // If the message is smaller than MAX_PAYLOAD_SIZE, it will be sent in a single iteration.
+            int bytes_remaining_to_send = msg_size;
+            char* current_send_pos = buf;
+            int send_error = 0;
+
+            while (bytes_remaining_to_send > 0) {
+                int chunk_size = (bytes_remaining_to_send > MAX_PAYLOAD_SIZE) ? MAX_PAYLOAD_SIZE : bytes_remaining_to_send;
+                if (sendto(s, current_send_pos, chunk_size, 0, (struct sockaddr*)&sin, sizeof(sin)) < 0) {
+                    perror("simplex-talk: sendto error");
+                    send_error = 1;
+                    break;
+                }
+                current_send_pos += chunk_size;
+                bytes_remaining_to_send -= chunk_size;
+            }
+
+            if (send_error) {
+                break; // Exit the main loop on a send error
+            }
             sent_messages++;
-            if(udp_receive(s, sin, buf, msg_size + 1) > 0) {
+
+            // --- Receiving Logic with Reassembly ---
+            // This loop attempts to receive the entire message, which may arrive in multiple fragments.
+            // It relies on the socket timeout (SO_RCVTIMEO) to avoid blocking indefinitely.
+            int total_bytes_received = 0;
+            int receive_error = 0;
+
+            while (total_bytes_received < msg_size) {
+                int bytes_received = udp_receive(s, sin, recv_buf + total_bytes_received, msg_size - total_bytes_received);
+                if (bytes_received > 0) {
+                    total_bytes_received += bytes_received;
+                } else {
+                    // Timeout occurred or another recvfrom error
+                    receive_error = 1;
+                    break;
+                }
+            }
+            
+            if (!receive_error && total_bytes_received == msg_size) {
                 stop_timer(&timer);
                 elapsed_time = get_elapsed_time_microseconds(&timer);
                 received_messages++;
                 total_time += elapsed_time;
                 fflush(stdout);
-            } else {      
-                fprintf(stdout, "> ERROR: Package %d timeout\n", sent_messages);
+            } else {    
+                fprintf(stdout, "> ERROR: Package %d timeout or incomplete reception\n", sent_messages);
                 fflush(stdout);
             }
         }
+        
+        free(recv_buf); // Free the receive buffer
+
         fprintf(stdout, "Sent %d messages, with size %d bytes using UDP protocol | Packet loss: %.2f%%\n", sent_messages, msg_size, (1.0 - (double)received_messages / sent_messages) * 100.0);
         if (received_messages > 0) {
             fprintf(stdout, "Total Time: %.2f [s] | Avg latency: %.2f [us] | Avg Throughput: %.2f [bps] / %.2f [kbps]\n",
-                    total_time / 1000000.0, total_time / received_messages, received_messages * msg_size * 8 /
-                    (total_time / 1000000.0), received_messages * msg_size * 8 /
+                    total_time / 1000000.0, total_time / received_messages, (double)received_messages * msg_size * 8 /
+                    (total_time / 1000000.0), (double)received_messages * msg_size * 8 /
                     (total_time / 1000.0));
         }
     } 
@@ -149,8 +200,9 @@ int main(int argc, char* argv[]) {
 }
 
 // +-----------------------------------------------------+
-// |                  HELPER FUNCTIONS                   |
+// |                     HELPER FUNCTIONS                |
 // +-----------------------------------------------------+
+
 
 int tcp_socket(int* s, struct sockaddr_in sin) {
     fprintf(stdout, "simplex-talk: creating TCP socket\n");
@@ -230,7 +282,8 @@ int udp_receive(int s, struct sockaddr_in sin, char* buf, int buf_size) {
     ssize_t bytes_received = recvfrom(s, buf, buf_size, 0, (struct sockaddr*)&sin, &sin_len);
     
     if (bytes_received >= 0) {
-      buf[bytes_received] = '\0';
+      // It's not safe to null-terminate here because the received data
+      // could be a binary fragment. The calling logic handles the total size.
     }
 
     return bytes_received;

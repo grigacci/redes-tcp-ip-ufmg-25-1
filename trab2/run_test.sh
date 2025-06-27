@@ -7,13 +7,13 @@ APP_TO_RUN="./build/client"
 
 # 2. The first two arguments, which will remain the same for every run.
 ARG1="192.168.18.46"
-ARG2="tcp"
+ARG2="udp"
 
 # 3. The configuration for the third argument, which will change.
 #    This script will run your program for each value from START to END.
-ARG3_START=4096
+ARG3_START=1024
 ARG3_END=32768
-ARG3_INCREMENT=2
+ARG3_INCREMENT=1024
 
 # 4. The delay in seconds before each run.
 #    You can use fractions, e.g., 0.5 for half a second.
@@ -32,7 +32,7 @@ echo "------------------------------------"
 
 # The 'for' loop iterates from the start value to the end value.
 # The `seq` command generates the sequence of numbers for us.
-for ((i = ARG3_START; i <= ARG3_END; i *= ARG3_INCREMENT)); do
+for ((i = ARG3_START; i <= ARG3_END; i += ARG3_INCREMENT)); do
 
   # This is the variable third argument for the current run.
   current_arg3=$i

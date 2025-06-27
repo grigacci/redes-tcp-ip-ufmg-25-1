@@ -221,3 +221,804 @@ simplex-talk: connected to server
 Sent 100000 messages, with size 2048 bytes using TCP protocol
 Total Time: 921.31 [s] | Avg latency: 9213.10 [us] | Avg Throughput: 1778337.15 [bps] / 1778.34 [kbps]
 ===> FINISHED run with argument 2048.
+
+===> Starting run 1 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 4096 bytes using TCP protocol
+Total Time: 295.14 [s] | Avg latency: 2951.35 [us] | Avg Throughput: -3449830.50 [bps] / -3449.83 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 2 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 4096 bytes using TCP protocol
+Total Time: 282.02 [s] | Avg latency: 2820.16 [us] | Avg Throughput: -3610323.11 [bps] / -3610.32 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 3 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 4096 bytes using TCP protocol
+Total Time: 262.69 [s] | Avg latency: 2626.86 [us] | Avg Throughput: -3875987.87 [bps] / -3875.99 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 1 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 8192 bytes using TCP protocol
+Total Time: 548.89 [s] | Avg latency: 5488.93 [us] | Avg Throughput: -3709896.83 [bps] / -3709.90 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 2 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 8192 bytes using TCP protocol
+Total Time: 679.32 [s] | Avg latency: 6793.21 [us] | Avg Throughput: -2997601.91 [bps] / -2997.60 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 3 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 8192 bytes using TCP protocol
+Total Time: 490.20 [s] | Avg latency: 4902.04 [us] | Avg Throughput: -4154056.28 [bps] / -4154.06 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 1 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 16384 bytes using TCP protocol
+Total Time: 367.19 [s] | Avg latency: 3671.93 [us] | Avg Throughput: 605397.75 [bps] / 605.40 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 2 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 16384 bytes using TCP protocol
+Total Time: 409.69 [s] | Avg latency: 4096.88 [us] | Avg Throughput: 542604.08 [bps] / 542.60 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 3 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 16384 bytes using TCP protocol
+Total Time: 428.02 [s] | Avg latency: 4280.24 [us] | Avg Throughput: 519359.32 [bps] / 519.36 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 1 with argument 32768...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 32768
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 32768 bytes using TCP protocol
+Total Time: 642.84 [s] | Avg latency: 6428.42 [us] | Avg Throughput: 691610.32 [bps] / 691.61 [kbps]
+===> FINISHED run with argument 32768.
+
+===> Starting run 2 with argument 32768...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 32768
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 32768 bytes using TCP protocol
+Total Time: 668.48 [s] | Avg latency: 6684.82 [us] | Avg Throughput: 665082.85 [bps] / 665.08 [kbps]
+===> FINISHED run with argument 32768.
+
+===> Starting run 3 with argument 32768...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 32768
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 32768 bytes using TCP protocol
+Total Time: 760.67 [s] | Avg latency: 7606.72 [us] | Avg Throughput: 584478.47 [bps] / 584.48 [kbps]
+===> FINISHED run with argument 32768.
+
+--- All runs completed. ---
+
+[UDP]
+--- Batch Runner Script Started ---
+Application:      ./build/client
+Static Args:      '192.168.18.46', 'udp'
+Variable Arg 3:   From 64 to 32768, incrementing by 2
+Delay Between Runs: 1s
+------------------------------------
+
+===> Starting run 1 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 64 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 133.69 [s] | Avg latency: 1336.87 [us] | Avg Throughput: 382985.33 [bps] / 382.99 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 2 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 64 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 137.74 [s] | Avg latency: 1377.39 [us] | Avg Throughput: 371718.83 [bps] / 371.72 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 3 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 4949 timeout
+Sent 100000 messages, with size 64 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 136.02 [s] | Avg latency: 1360.20 [us] | Avg Throughput: 376416.17 [bps] / 376.42 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 1 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 813 timeout
+Sent 100000 messages, with size 128 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 132.80 [s] | Avg latency: 1327.97 [us] | Avg Throughput: 771102.40 [bps] / 771.10 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 2 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 128 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 124.79 [s] | Avg latency: 1247.88 [us] | Avg Throughput: 820589.28 [bps] / 820.59 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 3 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 128 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 150.29 [s] | Avg latency: 1502.93 [us] | Avg Throughput: 681334.94 [bps] / 681.33 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 1 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 5270 timeout
+Sent 100000 messages, with size 256 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 304.88 [s] | Avg latency: 3048.78 [us] | Avg Throughput: 671743.83 [bps] / 671.74 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 2 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 256 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 130.57 [s] | Avg latency: 1305.71 [us] | Avg Throughput: 1568490.42 [bps] / 1568.49 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 3 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 256 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 124.91 [s] | Avg latency: 1249.15 [us] | Avg Throughput: 1639520.18 [bps] / 1639.52 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 1 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 19724 timeout
+Sent 100000 messages, with size 512 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 127.96 [s] | Avg latency: 1279.65 [us] | Avg Throughput: 3200877.73 [bps] / 3200.88 [kbps]
+===> FINISHED run with argument 512.
+
+===> Starting run 2 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 512 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 129.46 [s] | Avg latency: 1294.58 [us] | Avg Throughput: 3163971.22 [bps] / 3163.97 [kbps]
+===> FINISHED run with argument 512.
+
+===> Starting run 3 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 512 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 130.97 [s] | Avg latency: 1309.70 [us] | Avg Throughput: 3127429.55 [bps] / 3127.43 [kbps]
+===> FINISHED run with argument 512.
+
+--- Batch Runner Script Started ---
+Application:      ./build/client
+Static Args:      '192.168.18.46', 'udp'
+Variable Arg 3:   From 1024 to 32768, incrementing by 1024
+Delay Between Runs: 1s
+------------------------------------
+
+===> Starting run 1 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 1024 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 144.52 [s] | Avg latency: 1445.23 [us] | Avg Throughput: 5668290.97 [bps] / 5668.29 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 2 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 1024 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 158.57 [s] | Avg latency: 1585.71 [us] | Avg Throughput: 5166144.35 [bps] / 5166.14 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 3 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 1024 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 154.37 [s] | Avg latency: 1543.68 [us] | Avg Throughput: 5306814.13 [bps] / 5306.81 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 1 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 2048 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 160.12 [s] | Avg latency: 1601.16 [us] | Avg Throughput: 10232553.26 [bps] / 10232.55 [kbps]
+===> FINISHED run with argument 2048.
+
+===> Starting run 2 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 2048 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 155.40 [s] | Avg latency: 1553.96 [us] | Avg Throughput: 10543384.37 [bps] / 10543.38 [kbps]
+===> FINISHED run with argument 2048.
+
+===> Starting run 3 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 2048 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 159.00 [s] | Avg latency: 1590.01 [us] | Avg Throughput: 10304322.33 [bps] / 10304.32 [kbps]
+===> FINISHED run with argument 2048.
+
+===> Starting run 1 with argument 3072...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 3072
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 3072 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 164.07 [s] | Avg latency: 1640.73 [us] | Avg Throughput: 14978690.00 [bps] / 14978.69 [kbps]
+===> FINISHED run with argument 3072.
+
+===> Starting run 2 with argument 3072...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 3072
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 3072 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 170.48 [s] | Avg latency: 1704.77 [us] | Avg Throughput: 14416023.81 [bps] / 14416.02 [kbps]
+===> FINISHED run with argument 3072.
+
+===> Starting run 3 with argument 3072...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 3072
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 3072 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 165.58 [s] | Avg latency: 1655.84 [us] | Avg Throughput: 14841984.11 [bps] / 14841.98 [kbps]
+===> FINISHED run with argument 3072.
+
+===> Starting run 1 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 4096 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 194.33 [s] | Avg latency: 1943.29 [us] | Avg Throughput: 16862083.44 [bps] / 16862.08 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 2 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 4096 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 194.72 [s] | Avg latency: 1947.16 [us] | Avg Throughput: 16828582.33 [bps] / 16828.58 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 3 with argument 4096...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 4096
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 4096 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 186.53 [s] | Avg latency: 1865.34 [us] | Avg Throughput: 17566805.92 [bps] / 17566.81 [kbps]
+===> FINISHED run with argument 4096.
+
+===> Starting run 1 with argument 5120...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 5120
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 5120 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 196.57 [s] | Avg latency: 1965.73 [us] | Avg Throughput: 20837019.95 [bps] / 20837.02 [kbps]
+===> FINISHED run with argument 5120.
+
+===> Starting run 2 with argument 5120...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 5120
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 5120 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 194.06 [s] | Avg latency: 1940.55 [us] | Avg Throughput: 21107389.06 [bps] / 21107.39 [kbps]
+===> FINISHED run with argument 5120.
+
+===> Starting run 3 with argument 5120...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 5120
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 5120 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 200.42 [s] | Avg latency: 2004.25 [us] | Avg Throughput: 20436616.98 [bps] / 20436.62 [kbps]
+===> FINISHED run with argument 5120.
+
+===> Starting run 1 with argument 6144...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 6144
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 1 timeout or incomplete reception
+Sent 100000 messages, with size 6144 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 203.13 [s] | Avg latency: 2031.30 [us] | Avg Throughput: 24197306.10 [bps] / 24197.31 [kbps]
+===> FINISHED run with argument 6144.
+
+===> Starting run 2 with argument 6144...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 6144
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 6144 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 197.17 [s] | Avg latency: 1971.67 [us] | Avg Throughput: 24929060.51 [bps] / 24929.06 [kbps]
+===> FINISHED run with argument 6144.
+
+===> Starting run 3 with argument 6144...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 6144
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 6144 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 197.16 [s] | Avg latency: 1971.65 [us] | Avg Throughput: 24929416.31 [bps] / 24929.42 [kbps]
+===> FINISHED run with argument 6144.
+
+===> Starting run 1 with argument 7168...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 7168
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 1 timeout or incomplete reception
+Sent 100000 messages, with size 7168 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 202.40 [s] | Avg latency: 2024.05 [us] | Avg Throughput: 28331352.65 [bps] / 28331.35 [kbps]
+===> FINISHED run with argument 7168.
+
+===> Starting run 2 with argument 7168...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 7168
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 7168 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 201.63 [s] | Avg latency: 2016.30 [us] | Avg Throughput: 28440260.95 [bps] / 28440.26 [kbps]
+===> FINISHED run with argument 7168.
+
+===> Starting run 3 with argument 7168...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 7168
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 7168 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 200.73 [s] | Avg latency: 2007.27 [us] | Avg Throughput: 28568116.82 [bps] / 28568.12 [kbps]
+===> FINISHED run with argument 7168.
+
+===> Starting run 1 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 8192 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 207.18 [s] | Avg latency: 2071.77 [us] | Avg Throughput: 31632867.87 [bps] / 31632.87 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 2 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 8192 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 205.02 [s] | Avg latency: 2050.22 [us] | Avg Throughput: 31965392.79 [bps] / 31965.39 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 3 with argument 8192...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 8192
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 8192 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 202.99 [s] | Avg latency: 2029.92 [us] | Avg Throughput: 32285064.76 [bps] / 32285.06 [kbps]
+===> FINISHED run with argument 8192.
+
+===> Starting run 1 with argument 9216...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 9216
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 9216 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 221.14 [s] | Avg latency: 2211.39 [us] | Avg Throughput: 33340159.09 [bps] / 33340.16 [kbps]
+===> FINISHED run with argument 9216.
+
+===> Starting run 2 with argument 9216...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 9216
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 9216 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 215.78 [s] | Avg latency: 2157.77 [us] | Avg Throughput: 34168627.90 [bps] / 34168.63 [kbps]
+===> FINISHED run with argument 9216.
+
+===> Starting run 3 with argument 9216...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 9216
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 96949 timeout or incomplete reception
+> ERROR: Package 96956 timeout or incomplete reception
+> ERROR: Package 97015 timeout or incomplete reception
+Sent 100000 messages, with size 9216 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 202.65 [s] | Avg latency: 2026.57 [us] | Avg Throughput: 36380675.76 [bps] / 36380.68 [kbps]
+===> FINISHED run with argument 9216.
+
+===> Starting run 1 with argument 10240...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 10240
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 7773 timeout or incomplete reception
+> ERROR: Package 17387 timeout or incomplete reception
+> ERROR: Package 18244 timeout or incomplete reception
+> ERROR: Package 35062 timeout or incomplete reception
+> ERROR: Package 56088 timeout or incomplete reception
+> ERROR: Package 58315 timeout or incomplete reception
+Sent 100000 messages, with size 10240 bytes using UDP protocol | Packet loss: 0.01%
+Total Time: 258.46 [s] | Avg latency: 2584.80 [us] | Avg Throughput: 31692965.73 [bps] / 31692.97 [kbps]
+===> FINISHED run with argument 10240.
+
+===> Starting run 2 with argument 10240...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 10240
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 10240 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 256.34 [s] | Avg latency: 2563.43 [us] | Avg Throughput: 31957130.68 [bps] / 31957.13 [kbps]
+===> FINISHED run with argument 10240.
+
+===> Starting run 3 with argument 10240...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 10240
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 10240 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 282.18 [s] | Avg latency: 2821.81 [us] | Avg Throughput: 29030987.83 [bps] / 29030.99 [kbps]
+===> FINISHED run with argument 10240.
+
+===> Starting run 1 with argument 11264...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 11264
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 30852 timeout or incomplete reception
+Sent 100000 messages, with size 11264 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 321.39 [s] | Avg latency: 3213.94 [us] | Avg Throughput: 28037886.16 [bps] / 28037.89 [kbps]
+===> FINISHED run with argument 11264.
+
+===> Starting run 2 with argument 11264...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 11264
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 11264 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 316.40 [s] | Avg latency: 3163.97 [us] | Avg Throughput: 28480677.61 [bps] / 28480.68 [kbps]
+===> FINISHED run with argument 11264.
+
+===> Starting run 3 with argument 11264...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 11264
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 21427 timeout or incomplete reception
+> ERROR: Package 26868 timeout or incomplete reception
+> ERROR: Package 95056 timeout or incomplete reception
+Sent 100000 messages, with size 11264 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 308.09 [s] | Avg latency: 3081.00 [us] | Avg Throughput: 29247665.42 [bps] / 29247.67 [kbps]
+===> FINISHED run with argument 11264.
+
+===> Starting run 1 with argument 12288...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 12288
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 36656 timeout or incomplete reception
+> ERROR: Package 50818 timeout or incomplete reception
+> ERROR: Package 81461 timeout or incomplete reception
+> ERROR: Package 81563 timeout or incomplete reception
+> ERROR: Package 93786 timeout or incomplete reception
+> ERROR: Package 94057 timeout or incomplete reception
+> ERROR: Package 95177 timeout or incomplete reception
+> ERROR: Package 96519 timeout or incomplete reception
+> ERROR: Package 99354 timeout or incomplete reception
+> ERROR: Package 99640 timeout or incomplete reception
+Sent 100000 messages, with size 12288 bytes using UDP protocol | Packet loss: 0.01%
+Total Time: 288.12 [s] | Avg latency: 2881.49 [us] | Avg Throughput: 34115624.25 [bps] / 34115.62 [kbps]
+===> FINISHED run with argument 12288.
+
+===> Starting run 2 with argument 12288...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 12288
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 1450 timeout or incomplete reception
+> ERROR: Package 4210 timeout or incomplete reception
+> ERROR: Package 17090 timeout or incomplete reception
+> ERROR: Package 19148 timeout or incomplete reception
+> ERROR: Package 26247 timeout or incomplete reception
+> ERROR: Package 36736 timeout or incomplete reception
+> ERROR: Package 39123 timeout or incomplete reception
+> ERROR: Package 39501 timeout or incomplete reception
+> ERROR: Package 40231 timeout or incomplete reception
+> ERROR: Package 43231 timeout or incomplete reception
+> ERROR: Package 66431 timeout or incomplete reception
+> ERROR: Package 85336 timeout or incomplete reception
+> ERROR: Package 90274 timeout or incomplete reception
+Sent 100000 messages, with size 12288 bytes using UDP protocol | Packet loss: 0.01%
+Total Time: 290.29 [s] | Avg latency: 2903.23 [us] | Avg Throughput: 33860176.96 [bps] / 33860.18 [kbps]
+===> FINISHED run with argument 12288.
+
+===> Starting run 3 with argument 12288...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 12288
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 56148 timeout or incomplete reception
+Sent 100000 messages, with size 12288 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 258.69 [s] | Avg latency: 2586.94 [us] | Avg Throughput: 38000145.96 [bps] / 38000.15 [kbps]
+===> FINISHED run with argument 12288.
+
+===> Starting run 1 with argument 13312...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 13312
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 71907 timeout or incomplete reception
+> ERROR: Package 80179 timeout or incomplete reception
+Sent 100000 messages, with size 13312 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 271.74 [s] | Avg latency: 2717.41 [us] | Avg Throughput: 39190307.28 [bps] / 39190.31 [kbps]
+===> FINISHED run with argument 13312.
+
+===> Starting run 2 with argument 13312...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 13312
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 80606 timeout or incomplete reception
+> ERROR: Package 97781 timeout or incomplete reception
+Sent 100000 messages, with size 13312 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 277.24 [s] | Avg latency: 2772.46 [us] | Avg Throughput: 38412044.49 [bps] / 38412.04 [kbps]
+===> FINISHED run with argument 13312.
+
+===> Starting run 3 with argument 13312...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 13312
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 56693 timeout or incomplete reception
+> ERROR: Package 60140 timeout or incomplete reception
+> ERROR: Package 65723 timeout or incomplete reception
+> ERROR: Package 72082 timeout or incomplete reception
+Sent 100000 messages, with size 13312 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 307.03 [s] | Avg latency: 3070.46 [us] | Avg Throughput: 34684077.34 [bps] / 34684.08 [kbps]
+===> FINISHED run with argument 13312.
+
+===> Starting run 1 with argument 14336...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 14336
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 4325 timeout or incomplete reception
+> ERROR: Package 97218 timeout or incomplete reception
+> ERROR: Package 98383 timeout or incomplete reception
+Sent 100000 messages, with size 14336 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 345.85 [s] | Avg latency: 3458.62 [us] | Avg Throughput: 33160086.66 [bps] / 33160.09 [kbps]
+===> FINISHED run with argument 14336.
+
+===> Starting run 2 with argument 14336...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 14336
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 53724 timeout or incomplete reception
+> ERROR: Package 53725 timeout or incomplete reception
+> ERROR: Package 53804 timeout or incomplete reception
+> ERROR: Package 53957 timeout or incomplete reception
+> ERROR: Package 74354 timeout or incomplete reception
+Sent 100000 messages, with size 14336 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 352.88 [s] | Avg latency: 3528.99 [us] | Avg Throughput: 32498838.28 [bps] / 32498.84 [kbps]
+===> FINISHED run with argument 14336.
+
+===> Starting run 3 with argument 14336...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 14336
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 3285 timeout or incomplete reception
+> ERROR: Package 11059 timeout or incomplete reception
+> ERROR: Package 22035 timeout or incomplete reception
+> ERROR: Package 97262 timeout or incomplete reception
+> ERROR: Package 97263 timeout or incomplete reception
+Sent 100000 messages, with size 14336 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 362.11 [s] | Avg latency: 3621.33 [us] | Avg Throughput: 31670158.97 [bps] / 31670.16 [kbps]
+===> FINISHED run with argument 14336.
+
+===> Starting run 1 with argument 15360...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 15360
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 25372 timeout or incomplete reception
+Sent 100000 messages, with size 15360 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 322.68 [s] | Avg latency: 3226.86 [us] | Avg Throughput: 38080407.38 [bps] / 38080.41 [kbps]
+===> FINISHED run with argument 15360.
+
+===> Starting run 2 with argument 15360...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 15360
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 79053 timeout or incomplete reception
+Sent 100000 messages, with size 15360 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 309.10 [s] | Avg latency: 3090.99 [us] | Avg Throughput: 39754218.07 [bps] / 39754.22 [kbps]
+===> FINISHED run with argument 15360.
+
+===> Starting run 3 with argument 15360...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 15360
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 1004 timeout or incomplete reception
+> ERROR: Package 1041 timeout or incomplete reception
+Sent 100000 messages, with size 15360 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 352.62 [s] | Avg latency: 3526.31 [us] | Avg Throughput: 34846624.35 [bps] / 34846.62 [kbps]
+===> FINISHED run with argument 15360.
+
+===> Starting run 1 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 21494 timeout or incomplete reception
+> ERROR: Package 24909 timeout or incomplete reception
+Sent 100000 messages, with size 16384 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 304.56 [s] | Avg latency: 3045.69 [us] | Avg Throughput: 43035245.83 [bps] / 43035.25 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 2 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 23498 timeout or incomplete reception
+> ERROR: Package 34978 timeout or incomplete reception
+> ERROR: Package 96583 timeout or incomplete reception
+Sent 100000 messages, with size 16384 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 312.02 [s] | Avg latency: 3120.30 [us] | Avg Throughput: 42006235.69 [bps] / 42006.24 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 3 with argument 16384...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 16384
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 36023 timeout or incomplete reception
+Sent 100000 messages, with size 16384 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 317.14 [s] | Avg latency: 3171.43 [us] | Avg Throughput: 41328953.60 [bps] / 41328.95 [kbps]
+===> FINISHED run with argument 16384.
+
+===> Starting run 1 with argument 17408...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 17408
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+> ERROR: Package 8372 timeout or incomplete reception
+> ERROR: Package 8373 timeout or incomplete reception
+Sent 100000 messages, with size 17408 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 342.48 [s] | Avg latency: 3424.89 [us] | Avg Throughput: 40662333.15 [bps] / 40662.33 [kbps]
+===> FINISHED run with argument 17408.
+
+===> Starting run 2 with argument 17408...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 17408
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
+Sent 100000 messages, with size 17408 bytes using UDP protocol | Packet loss: 0.00%
+Total Time: 336.65 [s] | Avg latency: 3366.46 [us] | Avg Throughput: 41368082.37 [bps] / 41368.08 [kbps]
+===> FINISHED run with argument 17408.
+
+===> Starting run 3 with argument 17408...
+===> Dry RUNNING: ./build/client 192.168.18.46 udp 17408
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using UDP protocol
