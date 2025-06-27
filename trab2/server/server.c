@@ -11,7 +11,7 @@
 
 #define SERVER_PORT 54321
 #define MAX_PENDING 5
-#define MAX_LINE 256
+#define MAX_LINE 32768
 
 int main(int argc, char* argv[]) {
   struct sockaddr_in sin;

@@ -1,0 +1,223 @@
+[TCP]
+--- Batch Runner Script Started ---
+Application:      ./build/client
+Static Args:      '192.168.18.46', 'tcp'
+Variable Arg 3:   From 64 to 32768, incrementing by 2
+Delay Between Runs: 1s
+------------------------------------
+
+===> Starting run 1 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 64 bytes using TCP protocol
+Total Time: 125.85 [s] | Avg latency: 1258.50 [us] | Avg Throughput: 406835.09 [bps] / 406.84 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 2 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 64 bytes using TCP protocol
+Total Time: 120.30 [s] | Avg latency: 1203.02 [us] | Avg Throughput: 425597.03 [bps] / 425.60 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 3 with argument 64...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 64
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 64 bytes using TCP protocol
+Total Time: 119.26 [s] | Avg latency: 1192.56 [us] | Avg Throughput: 429328.65 [bps] / 429.33 [kbps]
+===> FINISHED run with argument 64.
+
+===> Starting run 1 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 128 bytes using TCP protocol
+Total Time: 119.46 [s] | Avg latency: 1194.57 [us] | Avg Throughput: 857213.26 [bps] / 857.21 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 2 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 128 bytes using TCP protocol
+Total Time: 112.13 [s] | Avg latency: 1121.34 [us] | Avg Throughput: 913190.62 [bps] / 913.19 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 3 with argument 128...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 128
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 128 bytes using TCP protocol
+Total Time: 118.30 [s] | Avg latency: 1182.99 [us] | Avg Throughput: 865603.86 [bps] / 865.60 [kbps]
+===> FINISHED run with argument 128.
+
+===> Starting run 1 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 256 bytes using TCP protocol
+Total Time: 120.06 [s] | Avg latency: 1200.57 [us] | Avg Throughput: 1705854.70 [bps] / 1705.85 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 2 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 256 bytes using TCP protocol
+Total Time: 114.51 [s] | Avg latency: 1145.14 [us] | Avg Throughput: 1788429.32 [bps] / 1788.43 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 3 with argument 256...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 256
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 256 bytes using TCP protocol
+Total Time: 114.70 [s] | Avg latency: 1147.01 [us] | Avg Throughput: 1785519.23 [bps] / 1785.52 [kbps]
+===> FINISHED run with argument 256.
+
+===> Starting run 1 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 512 bytes using TCP protocol
+Total Time: 116.97 [s] | Avg latency: 1169.67 [us] | Avg Throughput: 3501838.13 [bps] / 3501.84 [kbps]
+===> FINISHED run with argument 512.
+
+===> Starting run 2 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 512 bytes using TCP protocol
+Total Time: 121.63 [s] | Avg latency: 1216.26 [us] | Avg Throughput: 3367705.71 [bps] / 3367.71 [kbps]
+===> FINISHED run with argument 512.
+
+===> Starting run 3 with argument 512...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 512
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 512 bytes using TCP protocol
+Total Time: 130.22 [s] | Avg latency: 1302.17 [us] | Avg Throughput: 3145518.47 [bps] / 3145.52 [kbps]
+===> FINISHED run with argument 512.
+
+===> Starting run 1 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 1024 bytes using TCP protocol
+Total Time: 140.72 [s] | Avg latency: 1407.16 [us] | Avg Throughput: 5821667.48 [bps] / 5821.67 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 2 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 1024 bytes using TCP protocol
+Total Time: 143.24 [s] | Avg latency: 1432.44 [us] | Avg Throughput: 5718917.23 [bps] / 5718.92 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 3 with argument 1024...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 1024
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 1024 bytes using TCP protocol
+Total Time: 132.98 [s] | Avg latency: 1329.75 [us] | Avg Throughput: 6160551.62 [bps] / 6160.55 [kbps]
+===> FINISHED run with argument 1024.
+
+===> Starting run 1 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 2048 bytes using TCP protocol
+Total Time: 581.13 [s] | Avg latency: 5811.30 [us] | Avg Throughput: 2819334.62 [bps] / 2819.33 [kbps]
+===> FINISHED run with argument 2048.
+
+===> Starting run 2 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 2048 bytes using TCP protocol
+Total Time: 623.93 [s] | Avg latency: 6239.26 [us] | Avg Throughput: 2625951.61 [bps] / 2625.95 [kbps]
+===> FINISHED run with argument 2048.
+
+===> Starting run 3 with argument 2048...
+===> Dry RUNNING: ./build/client 192.168.18.46 tcp 2048
+Pausing for 1 second(s)...
+simplex-talk: sending to 192.168.18.46 port 54321
+simplex-talk: using TCP protocol
+simplex-talk: creating TCP socket
+simplex-talk: connecting to server
+simplex-talk: connected to server
+Sent 100000 messages, with size 2048 bytes using TCP protocol
+Total Time: 921.31 [s] | Avg latency: 9213.10 [us] | Avg Throughput: 1778337.15 [bps] / 1778.34 [kbps]
+===> FINISHED run with argument 2048.
