@@ -16,7 +16,7 @@
 #include "timer.h"
 
 #define SERVER_PORT 54321
-#define MAX_MESSSAGES 100000
+#define MAX_MESSSAGES 1024
 #define MAX_TIMEOUT 2000000  // 2 seconds in microseconds
 #define MAX_PAYLOAD_SIZE 1400 // Safe payload size to avoid IP fragmentation
 

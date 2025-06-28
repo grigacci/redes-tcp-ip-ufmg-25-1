@@ -7,7 +7,7 @@ APP_TO_RUN="./build/client"
 
 # 2. The first two arguments, which will remain the same for every run.
 ARG1="192.168.18.46"
-ARG2="udp"
+ARG2="tcp"
 
 # 3. The configuration for the third argument, which will change.
 #    This script will run your program for each value from START to END.
